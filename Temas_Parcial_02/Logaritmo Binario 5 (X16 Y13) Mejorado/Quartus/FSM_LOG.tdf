@@ -1,0 +1,199 @@
+%
+Diseño en AHDL para el cálculo del logarítmo en base 2.
+Recibe un número in_X de N bits de parte entera y M bits de parte
+decimal. Arroja como salida a out_Y que es un número en formato
+signo-magnitud con P+Q bits, donde P es el tamaño de la característica
+con signo y Q es el tamaño de la mantisa.
+
+Consta de cinco estados.
+0)	Inicial. Aquí se arranca y aquí se termina. La señal ok indica que
+	se puede leer el dato. La señal _inf indica X=0 y log2 0 = -inf.
+	Sólo se pasa al estado uno si la señal start=1.
+1)	Cargar. Recarga los contadores C y Q, también carga el dato X.
+2)	Calculando característica. Decrementa C y desplaza X. Esto se hace
+	hasta que C = -(M+1) o hasta que msb(X) sea 1.
+3)	Cuadrado de X. Guarda parte alta de X^2 en X.
+4)	Calculando mantisa. Desplaza mantisa con el msb(X) y desplaza X si
+	msb(X)=0, también decrementa Q. Vuelve al estado tres si Q no es
+	cero, de lo contrario va al estado cero.
+	El desplazamiento de X se hace con el msb de la parte baja de X^2
+	para mejorar la precisión.
+	
+Bajo operación normal, en el mejor de los casos el algoritmo demora 
+2(Q+1) ciclos en volver al estado cero. En el peor de los casos tarda
+2(Q+1)+(N+M) ciclos en terminar la operación.
+
+Diseñado por:
+	Alvaro José Caicedo Beltrán
+	Ingeniería en Electrónica
+	Escuela de Ingeniería Eléctrica y Electrónica EIEE
+	Universidad del Valle. Cali - Colombia
+	Mayo de 2008
+%
+
+% Adaptación para N=8, M=8, Q=8;									%
+
+TITLE "Logaritmo en base 2";
+
+% Librerías de altera utilizadas - Megafunciones parametrizadas		%
+INCLUDE "lpm_counter.inc";
+INCLUDE "lpm_mux";
+INCLUDE "lpm_shiftreg";
+INCLUDE "lpm_mult";
+
+CONSTANT N = 8;			% #bits de la parte entera de X				%
+CONSTANT M = 8;			% #bits de la parte decimal de X			%
+CONSTANT Q = 8;			% #bits de la mantisa						%
+CONSTANT P = 5;			% #bits de la característica con signo		%
+
+% Definición de puertos de i/o										%
+SUBDESIGN fsm_log
+(
+	% Señal de reloj, reinicio, y arranque de la fsm				%
+	clk, rst, start						:INPUT = GND;
+	% Dato de entrada para calcularsele el logarítmo				%
+	in_X[(N+M-1)..0]					:INPUT = GND;
+	% Datos de salida: Característica (C2) y 0.Mantisa				%
+	out_C[(P-1)..0],out_M[(Q-1)..0]		:OUTPUT;
+	% Salida Y=log2 X (SM) y señal para -inf						%
+	out_Y[(P+Q-1)..0], _inf				:OUTPUT;
+	% Estados de fsm y señal que indica listo para recalcular		%
+	estados[2..0], ready				:OUTPUT;
+)
+
+VARIABLE
+	% Contador de P bits descendente para la característica			%
+	contador_C: lpm_counter WITH (
+		LPM_WIDTH = P,
+		LPM_DIRECTION = "DOWN"
+	);
+	% Contador modulo Q descendente para bits de mantisa			%
+	contador_Q: lpm_counter WITH (
+		LPM_WIDTH = LOG2(Q)+1,
+		LPM_DIRECTION = "DOWN"
+	);
+	% Registro de desplazamiento para la mantisa					%
+	shifter_M: lpm_shiftreg WITH (
+		LPM_WIDTH = Q,
+		LPM_DIRECTION = "LEFT"
+	);
+	% Registro de desplazamiento para la variable X					%
+	shifter_X: lpm_shiftreg WITH (
+		LPM_WIDTH = N+M,
+		LPM_DIRECTION = "LEFT"
+	);
+	% Multiplexor para cargar X con valor inicial o con X^2			%
+	mux_X: lpm_mux WITH (
+		LPM_WIDTH = N+M,
+		LPM_SIZE = 2,
+		LPM_WIDTHS = 1
+	);
+	% Multiplicador para calcular X^2. Salida truncada para X		%
+	cuadrado_X: lpm_mult WITH (
+		LPM_WIDTHA = N+M,
+		LPM_WIDTHB = N+M,
+		LPM_WIDTHS = 1,
+		LPM_WIDTHP = (N+M)+1
+		% Bits más significativos de a*b + s 						%
+		% Mostrando sólo los bits para X más el próximo LSB			%
+	);	
+	msb 		: NODE;			% Bit de salida del registro X		%
+	q_min		: NODE;			% Q alcanza valor 0					%
+	c_min		: NODE;			% C alcanza valor -M-1				%
+	
+	ss: MACHINE
+		% Señales que dependen del estado presente					%
+		OF BITS(
+		dec_C,			% Controla el decremento de C				%
+		load_C,			% Recargar contador C						%
+		dec_Q,			% Decrementar el contador Q					%
+		load_Q,			% Recarga del contador Q					%
+		shift_regM,		% Desplazar mantisa a la izquierda			%
+		sel_sourceX,	% Cargar X con in_X o con X^2				%
+		en_regX,		% Habilitar carga/desplazamiento de X		%
+		loadshift_regX,	% Cargar/desplazar X si está habilitado		%
+		inbit_regX,	% Habilitar carga del msb de parte baja de X^2	%
+		estados[2..0],	% Codificación de estados					%
+		ready			% Indicador de dato listo					%
+		)
+		WITH STATES(
+			s0=B"00000X0XX0001",	% Entrega resultado				%
+			s1=B"01010011X0010",	% Recarga C, Q y X=in_X			%
+			s2=B"10000X1000100",	% Desplaza X,0 y decrementa C	%
+			s3=B"00000111X0110",	% Hacer X = X^2 (parte alta+1)	%
+			s4=B"00101X0011000"		% Desplazar regM, decrementar Q	%
+									% y normalizar X si MSB=0		%
+		);	
+BEGIN
+	DEFAULTS
+		ss.reset = VCC;
+	END DEFAULTS;
+	
+	% Selección de fuente de carga para X							%
+	mux_X.data[0][] = in_X[];
+	mux_X.data[1][] = cuadrado_X.result[(N+M)..1];
+	mux_X.sel[0] = sel_sourceX;
+	
+	% Manejo del contador de característica							%
+	contador_C.clock  = !clk;
+	contador_C.clk_en = dec_C;
+	contador_C.aload  = load_C;
+	contador_C.data[] = N-1;
+	out_C[] = contador_C.q[];
+
+	% Manejo del contador Q											%
+	contador_Q.clock  = !clk;
+	contador_Q.clk_en = dec_Q;
+	contador_Q.aload  = load_Q;
+	contador_Q.data[] = Q;
+
+	% Manejo del registro de desplazamiento X						%
+	shifter_X.clock = !clk;
+	shifter_X.enable = en_regX # (inbit_regX & !msb);
+	shifter_X.shiftin = inbit_regX & cuadrado_X.result[0];
+	shifter_X.load = loadshift_regX;
+	shifter_X.data[] = mux_X.result[];
+	cuadrado_X.dataa[] = shifter_X.q[];
+	cuadrado_X.datab[] = shifter_X.q[];
+	msb = shifter_X.shiftout;
+
+	% Manejo del registro de desplazamiento de mantisa				%
+	shifter_M.clock = !clk;
+	shifter_M.enable = shift_regM;
+	shifter_M.shiftin = msb;
+	out_M[] = shifter_M.q[];
+
+	% Señales de control de la máquina de estados					%
+	ss.clk = clk;
+	ss.reset = rst;
+
+	% Expresiones de las señales de control o indicadores			%
+	q_min = (contador_Q.q[] == 0);
+	c_min = (contador_C.q[] == -M-1);
+	
+	% Formateando la salida (signo, característica, mantisa)		%
+	IF out_C[P-1] THEN
+		out_Y[] = !(out_C[], out_M[])+1;		% -out_C - out_M	%
+		out_Y[P+Q-1] = VCC;
+	ELSE
+		out_Y[] = (out_C[], out_M[]);
+	END IF;
+	
+	_inf = c_min;
+
+	% Tabla de transición de estados								%
+	TABLE
+		ss,	start,	q_min,	c_min,	msb	=>	ss;	
+		s0, 0, 		x,		x,		x	=>	s0;
+		s0,	1,		x,		x,		x	=>	s1;
+		s1,	x,		x,		0,		0	=>	s2;
+		s1,	x,		x,		0,		1	=>	s3;
+		s1,	x,		x,		1,		x	=>	s0;
+		s2,	x,		x,		0,		0	=>	s2;
+		s2,	x,		x,		0,		1	=>	s3;
+		s2,	x,		x,		1,		x	=>	s0;
+		s3,	x,		x,		x,		x	=>	s4;
+		s4,	x,		0,		x,		x	=>	s3;
+		s4,	x,		1,		x,		x	=>	s0;
+	END TABLE;
+END;

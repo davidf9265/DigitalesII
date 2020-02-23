@@ -1,0 +1,248 @@
+GED
+
+	Undo Commands
+	     1.	Properties
+	     2.	Insert Node
+	     3.	Insert Symbol
+	     4.	Delete
+	     5.	Properties
+	     6.	Insert Symbol
+	     7.	Move
+	     8.	Delete
+	     9.	Move
+	    10.	Move
+	    11.	Move
+	    12.	Move
+	    13.	Move
+	    14.	Move
+	    15.	Resize
+	    16.	Properties
+	    17.	Paste
+	    18.	Move
+	    19.	Update Symbol or Block
+	    20.	Move
+	    21.	Move
+	    22.	Delete
+	    23.	Delete
+	    24.	Resize
+	    25.	Properties
+	    26.	Insert Node
+	    27.	Insert Bus
+	    28.	Insert Bus
+	    29.	Move
+	    30.	Delete
+	    31.	Flip Horizontal
+	    32.	Paste
+	    33.	Move
+	    34.	Move
+	    35.	Move
+	    36.	Move
+	    37.	Move
+	    38.	Move
+	    39.	Move
+	    40.	Move
+	    41.	Move
+	    42.	Move
+	    43.	Insert Bus
+	    44.	Move
+	    45.	Flip Horizontal
+	    46.	Flip Vertical
+	    47.	Flip Vertical
+	    48.	Insert Symbol
+	    49.	Delete
+	    50.	Delete
+	    51.	Move
+	    52.	Move
+	    53.	Move
+	    54.	Move
+	    55.	Move
+	    56.	Move
+	    57.	Move
+	    58.	Move
+	    59.	Move
+	    60.	Move
+	    61.	Move
+	    62.	Move
+	    63.	Move
+	    64.	Move
+	    65.	Move
+	    66.	Move
+	    67.	Move
+	    68.	Move
+	    69.	Move
+	    70.	Move
+	    71.	Move
+	    72.	Move
+	    73.	Move
+	    74.	Move
+	    75.	Move
+	    76.	Move
+	    77.	Move
+	    78.	Insert Symbol
+	    79.	Delete
+	    80.	Properties
+	    81.	Insert Node
+	    82.	Insert Symbol
+	    83.	Properties
+	    84.	Properties
+	    85.	Properties
+	    86.	Properties
+	    87.	Update Symbol or Block
+	    88.	Update Symbol or Block
+	    89.	Update Symbol or Block
+	    90.	Update Symbol or Block
+	    91.	Resize
+	    92.	Delete
+	    93.	Properties
+	    94.	Delete
+	    95.	Properties
+	    96.	Properties
+	    97.	Properties
+	    98.	Update Symbol or Block
+	    99.	Delete
+	   100.	Delete
+
+
+WED
+
+	Undo Commands
+	     1.	Edit Waveform
+	     2.	Clock
+	     3.	Insert Node or Bus
+	     4.	Delete Node, Bus or Waveform Divider
+	     5.	Drop Node
+			 *** 
+	     6.	Clock
+	     7.	Edit Waveform
+	     8.	End Time
+	     9.	Insert Node or Bus
+
+
+RPW
+
+	Undo Commands
+	     1.	||Simulation Report||Simulator||Simulation Waveforms
+
+
+RPW
+
+	Undo Commands
+	     1.	||Compilation Report||Flow Summary
+
+
+SME
+
+	Undo Commands
+	     1.	Add Transition
+	     2.	Remove Various Glyph
+	     3.	Remove Various Glyph
+	     4.	Remove Various Glyph
+	     5.	Remove Various Glyph
+	     6.	Remove Various Glyph
+	     7.	Change State
+	     8.	Change State
+	     9.	Change State
+	    10.	Change State
+	    11.	Change State
+	    12.	Change State
+	    13.	Change State
+	    14.	Change State
+	    15.	Change State
+	    16.	Change State
+	    17.	Change Transition
+	    18.	Change Transition
+	    19.	Change State
+	    20.	Change State
+	    21.	Change State
+	    22.	Change State
+	    23.	Add Transition
+	    24.	Add Transition
+	    25.	Add Transition
+	    26.	Add Transition
+	    27.	Add Transition
+	    28.	Change Transition
+	    29.	Change Transition
+	    30.	Add Transition
+	    31.	Add Transition
+	    32.	Add State
+	    33.	Add Transition
+	    34.	Add Output
+	    35.	Change State
+	    36.	Add Transition
+	    37.	Change State
+	    38.	Add Transition
+	    39.	Change State
+	    40.	Add Transition
+	    41.	Change State
+	    42.	Add State
+	    43.	Change State
+	    44.	Change State
+	    45.	Add Transition
+	    46.	Change State
+	    47.	Add Transition
+	    48.	Add Transition
+	    49.	Add Transition
+	    50.	Change State
+	    51.	Remove Various Glyph
+	    52.	Remove Various Glyph
+	    53.	Remove Various Glyph
+	    54.	Remove Various Glyph
+	    55.	Remove Various Glyph
+	    56.	Remove Various Glyph
+	    57.	Change State
+	    58.	Change State
+	    59.	Change State
+	    60.	Change State
+	    61.	Change State
+	    62.	Change State
+	    63.	Add State
+	    64.	Add State
+	    65.	Add State
+	    66.	Add State
+	    67.	Add State
+	    68.	Add State
+	    69.	Change State
+	    70.	Add State
+	    71.	Remove Various Glyph
+	    72.	Change State
+	    73.	Change State
+	    74.	Change State
+	    75.	Change State
+	    76.	Add State
+	    77.	Add State
+	    78.	Add State
+	    79.	Add State
+	    80.	Add State
+	    81.	Change State
+	    82.	Change State
+	    83.	Add Transition
+	    84.	Add Transition
+	    85.	Remove Various Glyph
+	    86.	Remove Various Glyph
+	    87.	Remove Various Glyph
+	    88.	Remove Various Glyph
+	    89.	Remove Various Glyph
+	    90.	Remove Various Glyph
+	    91.	Remove Various Glyph
+	    92.	Remove Various Glyph
+	    93.	Add State
+	    94.	Add Transition
+	    95.	Add Transition
+	    96.	Add Transition
+	    97.	Change State
+	    98.	Change State
+	    99.	Add Transition
+	   100.	Change State
+
+
+WED
+
+	Undo Commands
+	     1.	Print Options
+	     2.	Change Time Bars
+	     3.	Change Time Bars
+	     4.	Move Time Bar
+			 ***  *** 
+	     5.	Change Time Bars
+
+

@@ -1,0 +1,610 @@
+Analysis & Synthesis report for LogBin
+Mon May 26 22:57:33 2008
+Version 5.0 Build 148 04/26/2005 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Analysis & Synthesis Source Files Read
+  5. Analysis & Synthesis Resource Usage Summary
+  6. Analysis & Synthesis Resource Utilization by Entity
+  7. State Machine - |LogBin|fsm_log:inst|ss
+  8. General Register Statistics
+  9. Parameter Settings for User Entity Instance: fsm_log:inst
+ 10. Parameter Settings for User Entity Instance: fsm_log:inst|lpm_counter:contador_C
+ 11. Parameter Settings for User Entity Instance: fsm_log:inst|lpm_counter:contador_Q
+ 12. Parameter Settings for User Entity Instance: fsm_log:inst|lpm_shiftreg:shifter_M
+ 13. Parameter Settings for User Entity Instance: fsm_log:inst|lpm_shiftreg:shifter_X
+ 14. Parameter Settings for User Entity Instance: fsm_log:inst|lpm_mux:mux_X
+ 15. Parameter Settings for User Entity Instance: fsm_log:inst|lpm_mult:cuadrado_X
+ 16. Parameter Settings for Inferred Entity Instance: fsm_log:inst|lpm_add_sub:op_1
+ 17. lpm_shiftreg Parameter Settings by Entity Instance
+ 18. lpm_mult Parameter Settings by Entity Instance
+ 19. Analysis & Synthesis Equations
+ 20. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2005 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic       
+functions, and any output files any of the foregoing           
+(including device programming or simulation files), and any    
+associated documentation or information are expressly subject  
+to the terms and conditions of the Altera Program License      
+Subscription Agreement, Altera MegaCore Function License       
+Agreement, or other applicable license agreement, including,   
+without limitation, that your use is for the sole purpose of   
+programming logic devices manufactured by Altera and sold by   
+Altera or its authorized distributors.  Please refer to the    
+applicable agreement for further details.
+
+
+
++------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                           ;
++-----------------------------+------------------------------------------+
+; Analysis & Synthesis Status ; Successful - Mon May 26 22:57:33 2008    ;
+; Quartus II Version          ; 5.0 Build 148 04/26/2005 SJ Full Version ;
+; Revision Name               ; LogBin                                   ;
+; Top-level Entity Name       ; LogBin                                   ;
+; Family                      ; FLEX10K                                  ;
+; Total logic elements        ; 459                                      ;
+; Total pins                  ; 50                                       ;
+; Total memory bits           ; 0                                        ;
++-----------------------------+------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                ;
++------------------------------------------------------------+-----------------+---------------+
+; Option                                                     ; Setting         ; Default Value ;
++------------------------------------------------------------+-----------------+---------------+
+; Device                                                     ; EPF10K70RC240-4 ;               ;
+; Top-level entity name                                      ; LogBin          ; LogBin        ;
+; Family name                                                ; FLEX10K         ; Stratix       ;
+; Use smart compilation                                      ; Off             ; Off           ;
+; Create Debugging Nodes for IP Cores                        ; off             ; off           ;
+; Preserve fewer node names                                  ; On              ; On            ;
+; Disable OpenCore Plus hardware evaluation                  ; Off             ; Off           ;
+; Verilog Version                                            ; Verilog_2001    ; Verilog_2001  ;
+; VHDL Version                                               ; VHDL93          ; VHDL93        ;
+; State Machine Processing                                   ; Auto            ; Auto          ;
+; Extract Verilog State Machines                             ; On              ; On            ;
+; Extract VHDL State Machines                                ; On              ; On            ;
+; Add Pass-Through Logic to Inferred RAMs                    ; On              ; On            ;
+; NOT Gate Push-Back                                         ; On              ; On            ;
+; Power-Up Don't Care                                        ; On              ; On            ;
+; Remove Redundant Logic Cells                               ; Off             ; Off           ;
+; Remove Duplicate Registers                                 ; On              ; On            ;
+; Ignore CARRY Buffers                                       ; Off             ; Off           ;
+; Ignore CASCADE Buffers                                     ; Off             ; Off           ;
+; Ignore GLOBAL Buffers                                      ; Off             ; Off           ;
+; Ignore ROW GLOBAL Buffers                                  ; Off             ; Off           ;
+; Ignore LCELL Buffers                                       ; Off             ; Off           ;
+; Ignore SOFT Buffers                                        ; On              ; On            ;
+; Limit AHDL Integers to 32 Bits                             ; Off             ; Off           ;
+; Auto Implement in ROM                                      ; Off             ; Off           ;
+; Optimization Technique -- FLEX 10K/10KE/10KA/ACEX 1K       ; Area            ; Area          ;
+; Carry Chain Length -- FLEX 10K                             ; 32              ; 32            ;
+; Cascade Chain Length                                       ; 2               ; 2             ;
+; Auto Carry Chains                                          ; On              ; On            ;
+; Auto Open-Drain Pins                                       ; On              ; On            ;
+; Remove Duplicate Logic                                     ; On              ; On            ;
+; Auto ROM Replacement                                       ; On              ; On            ;
+; Auto RAM Replacement                                       ; On              ; On            ;
+; Auto Clock Enable Replacement                              ; On              ; On            ;
+; Auto Resource Sharing                                      ; Off             ; Off           ;
+; Allow Any RAM Size For Recognition                         ; Off             ; Off           ;
+; Allow Any ROM Size For Recognition                         ; Off             ; Off           ;
+; Ignore translate_off and translate_on Synthesis Directives ; Off             ; Off           ;
+; Show Parameter Settings Tables in Synthesis Report         ; On              ; On            ;
++------------------------------------------------------------+-----------------+---------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                            ;
++----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------------------------------------------------------------------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                                                                            ;
++----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------------------------------------------------------------------+
+; FSM_LOG.tdf                      ; yes             ; User AHDL File                     ; L:/My Works/Ingeniería Electrónica/Semestre VI/Sistemas Digitales II/Logaritmo Binario 4 (X16 Y13) Mejorado/FSM_LOG.tdf ;
+; LogBin.bdf                       ; yes             ; User Block Diagram/Schematic File  ; L:/My Works/Ingeniería Electrónica/Semestre VI/Sistemas Digitales II/Logaritmo Binario 4 (X16 Y13) Mejorado/LogBin.bdf  ;
+; lpm_counter.inc                  ; yes             ; Other                              ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/lpm_counter.inc                                        ;
+; lpm_mux.inc                      ; yes             ; Other                              ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/lpm_mux.inc                                            ;
+; lpm_shiftreg.inc                 ; yes             ; Other                              ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/lpm_shiftreg.inc                                       ;
+; lpm_mult.inc                     ; yes             ; Other                              ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/lpm_mult.inc                                           ;
+; lpm_counter.tdf                  ; yes             ; Megafunction                       ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/lpm_counter.tdf                                        ;
+; lpm_constant.inc                 ; yes             ; Other                              ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/lpm_constant.inc                                       ;
+; lpm_decode.inc                   ; yes             ; Other                              ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/lpm_decode.inc                                         ;
+; lpm_add_sub.inc                  ; yes             ; Other                              ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/lpm_add_sub.inc                                        ;
+; cmpconst.inc                     ; yes             ; Other                              ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/cmpconst.inc                                           ;
+; lpm_compare.inc                  ; yes             ; Other                              ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/lpm_compare.inc                                        ;
+; dffeea.inc                       ; yes             ; Other                              ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/dffeea.inc                                             ;
+; alt_synch_counter.inc            ; yes             ; Other                              ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/alt_synch_counter.inc                                  ;
+; alt_synch_counter_f.inc          ; yes             ; Other                              ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/alt_synch_counter_f.inc                                ;
+; alt_counter_f10ke.inc            ; yes             ; Other                              ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/alt_counter_f10ke.inc                                  ;
+; alt_counter_stratix.inc          ; yes             ; Other                              ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/alt_counter_stratix.inc                                ;
+; aglobal50.inc                    ; yes             ; Other                              ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/aglobal50.inc                                          ;
+; alt_counter_f10ke.tdf            ; yes             ; Megafunction                       ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/alt_counter_f10ke.tdf                                  ;
+; flex10ke_lcell.inc               ; yes             ; Other                              ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/flex10ke_lcell.inc                                     ;
+; lpm_shiftreg.tdf                 ; yes             ; Megafunction                       ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/lpm_shiftreg.tdf                                       ;
+; lpm_mux.tdf                      ; yes             ; Megafunction                       ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/lpm_mux.tdf                                            ;
+; muxlut.inc                       ; yes             ; Other                              ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/muxlut.inc                                             ;
+; bypassff.inc                     ; yes             ; Other                              ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/bypassff.inc                                           ;
+; altshift.inc                     ; yes             ; Other                              ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/altshift.inc                                           ;
+; altshift.tdf                     ; yes             ; Megafunction                       ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/altshift.tdf                                           ;
+; muxlut.tdf                       ; yes             ; Megafunction                       ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/muxlut.tdf                                             ;
+; lpm_mult.tdf                     ; yes             ; Megafunction                       ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/lpm_mult.tdf                                           ;
+; multcore.inc                     ; yes             ; Other                              ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/multcore.inc                                           ;
+; multcore.tdf                     ; yes             ; Megafunction                       ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/multcore.tdf                                           ;
+; csa_add.inc                      ; yes             ; Other                              ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/csa_add.inc                                            ;
+; mpar_add.inc                     ; yes             ; Other                              ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/mpar_add.inc                                           ;
+; muleabz.inc                      ; yes             ; Other                              ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/muleabz.inc                                            ;
+; mul_lfrg.inc                     ; yes             ; Other                              ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/mul_lfrg.inc                                           ;
+; mul_boothc.inc                   ; yes             ; Other                              ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/mul_boothc.inc                                         ;
+; alt_ded_mult.inc                 ; yes             ; Other                              ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/alt_ded_mult.inc                                       ;
+; alt_ded_mult_y.inc               ; yes             ; Other                              ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/alt_ded_mult_y.inc                                     ;
+; dffpipe.inc                      ; yes             ; Other                              ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/dffpipe.inc                                            ;
+; mul_boothc.tdf                   ; yes             ; Megafunction                       ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/mul_boothc.tdf                                         ;
+; mpar_add.tdf                     ; yes             ; Megafunction                       ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/mpar_add.tdf                                           ;
+; lpm_add_sub.tdf                  ; yes             ; Megafunction                       ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/lpm_add_sub.tdf                                        ;
+; addcore.inc                      ; yes             ; Other                              ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/addcore.inc                                            ;
+; look_add.inc                     ; yes             ; Other                              ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/look_add.inc                                           ;
+; alt_stratix_add_sub.inc          ; yes             ; Other                              ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/alt_stratix_add_sub.inc                                ;
+; alt_mercury_add_sub.inc          ; yes             ; Other                              ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/alt_mercury_add_sub.inc                                ;
+; addcore.tdf                      ; yes             ; Megafunction                       ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/addcore.tdf                                            ;
+; a_csnbuffer.inc                  ; yes             ; Other                              ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/a_csnbuffer.inc                                        ;
+; a_csnbuffer.tdf                  ; yes             ; Megafunction                       ; c:/archivos de programa/altera/quartus50/libraries/megafunctions/a_csnbuffer.tdf                                        ;
++----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                     ;
++-----------------------------------+---------------------------------------------+
+; Resource                          ; Usage                                       ;
++-----------------------------------+---------------------------------------------+
+; Total logic elements              ; 459                                         ;
+; Total combinational functions     ; 450                                         ;
+;     -- Total 4-input functions    ; 128                                         ;
+;     -- Total 3-input functions    ; 62                                          ;
+;     -- Total 2-input functions    ; 244                                         ;
+;     -- Total 1-input functions    ; 12                                          ;
+;     -- Total 0-input functions    ; 4                                           ;
+; Combinational cells for routing   ; 0                                           ;
+; Total registers                   ; 43                                          ;
+; Total logic cells in carry chains ; 235                                         ;
+; I/O pins                          ; 50                                          ;
+; Maximum fan-out node              ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[0] ;
+; Maximum fan-out                   ; 47                                          ;
+; Total fan-out                     ; 1552                                        ;
+; Average fan-out                   ; 3.05                                        ;
++-----------------------------------+---------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                                                                       ;
++---------------------------------------------------------+-------------+--------------+-------------+------+--------------+-------------------+------------------+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Compilation Hierarchy Node                              ; Logic Cells ; LC Registers ; Memory Bits ; Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Full Hierarchy Name                                                                                                                                                                                   ;
++---------------------------------------------------------+-------------+--------------+-------------+------+--------------+-------------------+------------------+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; |LogBin                                                 ; 459 (1)     ; 43           ; 0           ; 50   ; 416 (1)      ; 9 (0)             ; 34 (0)           ; 235 (0)         ; |LogBin                                                                                                                                                                                               ;
+;    |fsm_log:inst|                                       ; 458 (19)    ; 43           ; 0           ; 0    ; 415 (9)      ; 9 (2)             ; 34 (8)           ; 235 (0)         ; |LogBin|fsm_log:inst                                                                                                                                                                                  ;
+;       |lpm_add_sub:op_1|                                ; 12 (0)      ; 0            ; 0           ; 0    ; 12 (0)       ; 0 (0)             ; 0 (0)            ; 12 (0)          ; |LogBin|fsm_log:inst|lpm_add_sub:op_1                                                                                                                                                                 ;
+;          |addcore:adder|                                ; 12 (2)      ; 0            ; 0           ; 0    ; 12 (2)       ; 0 (0)             ; 0 (0)            ; 12 (2)          ; |LogBin|fsm_log:inst|lpm_add_sub:op_1|addcore:adder                                                                                                                                                   ;
+;             |a_csnbuffer:result_node|                   ; 10 (10)     ; 0            ; 0           ; 0    ; 10 (10)      ; 0 (0)             ; 0 (0)            ; 10 (10)         ; |LogBin|fsm_log:inst|lpm_add_sub:op_1|addcore:adder|a_csnbuffer:result_node                                                                                                                           ;
+;       |lpm_counter:contador_C|                          ; 5 (0)       ; 5            ; 0           ; 0    ; 0 (0)        ; 0 (0)             ; 5 (0)            ; 5 (0)           ; |LogBin|fsm_log:inst|lpm_counter:contador_C                                                                                                                                                           ;
+;          |alt_counter_f10ke:wysi_counter|               ; 5 (5)       ; 5            ; 0           ; 0    ; 0 (0)        ; 0 (0)             ; 5 (5)            ; 5 (5)           ; |LogBin|fsm_log:inst|lpm_counter:contador_C|alt_counter_f10ke:wysi_counter                                                                                                                            ;
+;       |lpm_counter:contador_Q|                          ; 4 (0)       ; 4            ; 0           ; 0    ; 0 (0)        ; 0 (0)             ; 4 (0)            ; 4 (0)           ; |LogBin|fsm_log:inst|lpm_counter:contador_Q                                                                                                                                                           ;
+;          |alt_counter_f10ke:wysi_counter|               ; 4 (4)       ; 4            ; 0           ; 0    ; 0 (0)        ; 0 (0)             ; 4 (4)            ; 4 (4)           ; |LogBin|fsm_log:inst|lpm_counter:contador_Q|alt_counter_f10ke:wysi_counter                                                                                                                            ;
+;       |lpm_mult:cuadrado_X|                             ; 376 (0)     ; 0            ; 0           ; 0    ; 376 (0)      ; 0 (0)             ; 0 (0)            ; 211 (0)         ; |LogBin|fsm_log:inst|lpm_mult:cuadrado_X                                                                                                                                                              ;
+;          |multcore:mult_core|                           ; 376 (165)   ; 0            ; 0           ; 0    ; 376 (165)    ; 0 (0)             ; 0 (0)            ; 211 (0)         ; |LogBin|fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core                                                                                                                                           ;
+;             |mpar_add:padder|                           ; 188 (0)     ; 0            ; 0           ; 0    ; 188 (0)      ; 0 (0)             ; 0 (0)            ; 188 (0)         ; |LogBin|fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder                                                                                                                           ;
+;                |lpm_add_sub:adder[0]|                   ; 21 (0)      ; 0            ; 0           ; 0    ; 21 (0)       ; 0 (0)             ; 0 (0)            ; 21 (0)          ; |LogBin|fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]                                                                                                      ;
+;                   |addcore:adder|                       ; 21 (1)      ; 0            ; 0           ; 0    ; 21 (1)       ; 0 (0)             ; 0 (0)            ; 21 (1)          ; |LogBin|fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]|addcore:adder                                                                                        ;
+;                      |a_csnbuffer:result_node|          ; 20 (20)     ; 0            ; 0           ; 0    ; 20 (20)      ; 0 (0)             ; 0 (0)            ; 20 (20)         ; |LogBin|fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]|addcore:adder|a_csnbuffer:result_node                                                                ;
+;                |lpm_add_sub:adder[1]|                   ; 21 (0)      ; 0            ; 0           ; 0    ; 21 (0)       ; 0 (0)             ; 0 (0)            ; 21 (0)          ; |LogBin|fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[1]                                                                                                      ;
+;                   |addcore:adder|                       ; 21 (1)      ; 0            ; 0           ; 0    ; 21 (1)       ; 0 (0)             ; 0 (0)            ; 21 (1)          ; |LogBin|fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[1]|addcore:adder                                                                                        ;
+;                      |a_csnbuffer:result_node|          ; 20 (20)     ; 0            ; 0           ; 0    ; 20 (20)      ; 0 (0)             ; 0 (0)            ; 20 (20)         ; |LogBin|fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[1]|addcore:adder|a_csnbuffer:result_node                                                                ;
+;                |lpm_add_sub:adder[2]|                   ; 21 (0)      ; 0            ; 0           ; 0    ; 21 (0)       ; 0 (0)             ; 0 (0)            ; 21 (0)          ; |LogBin|fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[2]                                                                                                      ;
+;                   |addcore:adder|                       ; 21 (1)      ; 0            ; 0           ; 0    ; 21 (1)       ; 0 (0)             ; 0 (0)            ; 21 (1)          ; |LogBin|fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[2]|addcore:adder                                                                                        ;
+;                      |a_csnbuffer:result_node|          ; 20 (20)     ; 0            ; 0           ; 0    ; 20 (20)      ; 0 (0)             ; 0 (0)            ; 20 (20)         ; |LogBin|fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[2]|addcore:adder|a_csnbuffer:result_node                                                                ;
+;                |lpm_add_sub:adder[3]|                   ; 20 (0)      ; 0            ; 0           ; 0    ; 20 (0)       ; 0 (0)             ; 0 (0)            ; 20 (0)          ; |LogBin|fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[3]                                                                                                      ;
+;                   |addcore:adder|                       ; 20 (1)      ; 0            ; 0           ; 0    ; 20 (1)       ; 0 (0)             ; 0 (0)            ; 20 (1)          ; |LogBin|fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[3]|addcore:adder                                                                                        ;
+;                      |a_csnbuffer:result_node|          ; 19 (19)     ; 0            ; 0           ; 0    ; 19 (19)      ; 0 (0)             ; 0 (0)            ; 19 (19)         ; |LogBin|fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[3]|addcore:adder|a_csnbuffer:result_node                                                                ;
+;                |lpm_add_sub:adder[4]|                   ; 16 (0)      ; 0            ; 0           ; 0    ; 16 (0)       ; 0 (0)             ; 0 (0)            ; 16 (0)          ; |LogBin|fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[4]                                                                                                      ;
+;                   |addcore:adder|                       ; 16 (1)      ; 0            ; 0           ; 0    ; 16 (1)       ; 0 (0)             ; 0 (0)            ; 16 (1)          ; |LogBin|fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[4]|addcore:adder                                                                                        ;
+;                      |a_csnbuffer:result_node|          ; 15 (15)     ; 0            ; 0           ; 0    ; 15 (15)      ; 0 (0)             ; 0 (0)            ; 15 (15)         ; |LogBin|fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[4]|addcore:adder|a_csnbuffer:result_node                                                                ;
+;                |mpar_add:sub_par_add|                   ; 89 (0)      ; 0            ; 0           ; 0    ; 89 (0)       ; 0 (0)             ; 0 (0)            ; 89 (0)          ; |LogBin|fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add                                                                                                      ;
+;                   |lpm_add_sub:adder[0]|                ; 23 (0)      ; 0            ; 0           ; 0    ; 23 (0)       ; 0 (0)             ; 0 (0)            ; 23 (0)          ; |LogBin|fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]                                                                                 ;
+;                      |addcore:adder|                    ; 23 (1)      ; 0            ; 0           ; 0    ; 23 (1)       ; 0 (0)             ; 0 (0)            ; 23 (1)          ; |LogBin|fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]|addcore:adder                                                                   ;
+;                         |a_csnbuffer:result_node|       ; 22 (22)     ; 0            ; 0           ; 0    ; 22 (22)      ; 0 (0)             ; 0 (0)            ; 22 (22)         ; |LogBin|fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]|addcore:adder|a_csnbuffer:result_node                                           ;
+;                   |lpm_add_sub:adder[1]|                ; 22 (0)      ; 0            ; 0           ; 0    ; 22 (0)       ; 0 (0)             ; 0 (0)            ; 22 (0)          ; |LogBin|fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[1]                                                                                 ;
+;                      |addcore:adder|                    ; 22 (1)      ; 0            ; 0           ; 0    ; 22 (1)       ; 0 (0)             ; 0 (0)            ; 22 (1)          ; |LogBin|fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[1]|addcore:adder                                                                   ;
+;                         |a_csnbuffer:result_node|       ; 21 (21)     ; 0            ; 0           ; 0    ; 21 (21)      ; 0 (0)             ; 0 (0)            ; 21 (21)         ; |LogBin|fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[1]|addcore:adder|a_csnbuffer:result_node                                           ;
+;                   |mpar_add:sub_par_add|                ; 44 (0)      ; 0            ; 0           ; 0    ; 44 (0)       ; 0 (0)             ; 0 (0)            ; 44 (0)          ; |LogBin|fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|mpar_add:sub_par_add                                                                                 ;
+;                      |lpm_add_sub:adder[0]|             ; 26 (0)      ; 0            ; 0           ; 0    ; 26 (0)       ; 0 (0)             ; 0 (0)            ; 26 (0)          ; |LogBin|fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|mpar_add:sub_par_add|lpm_add_sub:adder[0]                                                            ;
+;                         |addcore:adder|                 ; 26 (1)      ; 0            ; 0           ; 0    ; 26 (1)       ; 0 (0)             ; 0 (0)            ; 26 (1)          ; |LogBin|fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|mpar_add:sub_par_add|lpm_add_sub:adder[0]|addcore:adder                                              ;
+;                            |a_csnbuffer:result_node|    ; 25 (25)     ; 0            ; 0           ; 0    ; 25 (25)      ; 0 (0)             ; 0 (0)            ; 25 (25)         ; |LogBin|fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|mpar_add:sub_par_add|lpm_add_sub:adder[0]|addcore:adder|a_csnbuffer:result_node                      ;
+;                      |mpar_add:sub_par_add|             ; 18 (0)      ; 0            ; 0           ; 0    ; 18 (0)       ; 0 (0)             ; 0 (0)            ; 18 (0)          ; |LogBin|fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|mpar_add:sub_par_add|mpar_add:sub_par_add                                                            ;
+;                         |lpm_add_sub:adder[0]|          ; 18 (0)      ; 0            ; 0           ; 0    ; 18 (0)       ; 0 (0)             ; 0 (0)            ; 18 (0)          ; |LogBin|fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|mpar_add:sub_par_add|mpar_add:sub_par_add|lpm_add_sub:adder[0]                                       ;
+;                            |addcore:adder|              ; 18 (1)      ; 0            ; 0           ; 0    ; 18 (1)       ; 0 (0)             ; 0 (0)            ; 18 (1)          ; |LogBin|fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|mpar_add:sub_par_add|mpar_add:sub_par_add|lpm_add_sub:adder[0]|addcore:adder                         ;
+;                               |a_csnbuffer:result_node| ; 17 (17)     ; 0            ; 0           ; 0    ; 17 (17)      ; 0 (0)             ; 0 (0)            ; 17 (17)         ; |LogBin|fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|mpar_add:sub_par_add|mpar_add:sub_par_add|lpm_add_sub:adder[0]|addcore:adder|a_csnbuffer:result_node ;
+;             |mul_boothc:booth_enc|                      ; 23 (23)     ; 0            ; 0           ; 0    ; 23 (23)      ; 0 (0)             ; 0 (0)            ; 23 (23)         ; |LogBin|fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mul_boothc:booth_enc                                                                                                                      ;
+;       |lpm_mux:mux_X|                                   ; 2 (0)       ; 0            ; 0           ; 0    ; 2 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; |LogBin|fsm_log:inst|lpm_mux:mux_X                                                                                                                                                                    ;
+;          |muxlut:$00009|                                ; 1 (1)       ; 0            ; 0           ; 0    ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; |LogBin|fsm_log:inst|lpm_mux:mux_X|muxlut:$00009                                                                                                                                                      ;
+;          |muxlut:$00011|                                ; 1 (1)       ; 0            ; 0           ; 0    ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; |LogBin|fsm_log:inst|lpm_mux:mux_X|muxlut:$00011                                                                                                                                                      ;
+;       |lpm_shiftreg:shifter_M|                          ; 8 (8)       ; 8            ; 0           ; 0    ; 0 (0)        ; 7 (7)             ; 1 (1)            ; 1 (1)           ; |LogBin|fsm_log:inst|lpm_shiftreg:shifter_M                                                                                                                                                           ;
+;       |lpm_shiftreg:shifter_X|                          ; 32 (32)     ; 16           ; 0           ; 0    ; 16 (16)      ; 0 (0)             ; 16 (16)          ; 2 (2)           ; |LogBin|fsm_log:inst|lpm_shiftreg:shifter_X                                                                                                                                                           ;
++---------------------------------------------------------+-------------+--------------+-------------+------+--------------+-------------------+------------------+-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-----------------------------------------+
+; State Machine - |LogBin|fsm_log:inst|ss ;
++------+----+----+----+----+--------------+
+; Name ; s3 ; s1 ; s2 ; s4 ; s0           ;
++------+----+----+----+----+--------------+
+; s0   ; 0  ; 1  ; 1  ; 0  ; 1            ;
+; s1   ; 0  ; 0  ; 1  ; 0  ; 0            ;
+; s2   ; 0  ; 1  ; 0  ; 0  ; 0            ;
+; s3   ; 1  ; 1  ; 1  ; 0  ; 0            ;
+; s4   ; 0  ; 1  ; 1  ; 1  ; 0            ;
++------+----+----+----+----+--------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 43    ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 3     ;
+; Number of registers using Asynchronous Clear ; 7     ;
+; Number of registers using Asynchronous Load  ; 12    ;
+; Number of registers using Clock Enable       ; 33    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-----------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fsm_log:inst ;
++----------------+-------+----------------------------------+
+; Parameter Name ; Value ; Type                             ;
++----------------+-------+----------------------------------+
+; LPM_WIDTHS     ; 1     ; Untyped                          ;
++----------------+-------+----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fsm_log:inst|lpm_counter:contador_C ;
++------------------------+---------+-----------------------------------------------+
+; Parameter Name         ; Value   ; Type                                          ;
++------------------------+---------+-----------------------------------------------+
+; AUTO_CARRY_CHAINS      ; ON      ; AUTO_CARRY                                    ;
+; IGNORE_CARRY_BUFFERS   ; OFF     ; IGNORE_CARRY                                  ;
+; AUTO_CASCADE_CHAINS    ; ON      ; AUTO_CASCADE                                  ;
+; IGNORE_CASCADE_BUFFERS ; OFF     ; IGNORE_CASCADE                                ;
+; LPM_WIDTH              ; 5       ; Untyped                                       ;
+; LPM_DIRECTION          ; DOWN    ; Untyped                                       ;
+; LPM_MODULUS            ; 0       ; Untyped                                       ;
+; LPM_AVALUE             ; UNUSED  ; Untyped                                       ;
+; LPM_SVALUE             ; UNUSED  ; Untyped                                       ;
+; DEVICE_FAMILY          ; FLEX10K ; Untyped                                       ;
+; CARRY_CHAIN            ; MANUAL  ; Untyped                                       ;
+; CARRY_CHAIN_LENGTH     ; 48      ; CARRY_CHAIN_LENGTH                            ;
+; NOT_GATE_PUSH_BACK     ; ON      ; NOT_GATE_PUSH_BACK                            ;
+; CARRY_CNT_EN           ; SMART   ; Untyped                                       ;
+; LABWIDE_SCLR           ; ON      ; Untyped                                       ;
+; USE_NEW_VERSION        ; TRUE    ; Untyped                                       ;
+; CBXI_PARAMETER         ; NOTHING ; Untyped                                       ;
++------------------------+---------+-----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fsm_log:inst|lpm_counter:contador_Q ;
++------------------------+---------+-----------------------------------------------+
+; Parameter Name         ; Value   ; Type                                          ;
++------------------------+---------+-----------------------------------------------+
+; AUTO_CARRY_CHAINS      ; ON      ; AUTO_CARRY                                    ;
+; IGNORE_CARRY_BUFFERS   ; OFF     ; IGNORE_CARRY                                  ;
+; AUTO_CASCADE_CHAINS    ; ON      ; AUTO_CASCADE                                  ;
+; IGNORE_CASCADE_BUFFERS ; OFF     ; IGNORE_CASCADE                                ;
+; LPM_WIDTH              ; 4       ; Untyped                                       ;
+; LPM_DIRECTION          ; DOWN    ; Untyped                                       ;
+; LPM_MODULUS            ; 0       ; Untyped                                       ;
+; LPM_AVALUE             ; UNUSED  ; Untyped                                       ;
+; LPM_SVALUE             ; UNUSED  ; Untyped                                       ;
+; DEVICE_FAMILY          ; FLEX10K ; Untyped                                       ;
+; CARRY_CHAIN            ; MANUAL  ; Untyped                                       ;
+; CARRY_CHAIN_LENGTH     ; 48      ; CARRY_CHAIN_LENGTH                            ;
+; NOT_GATE_PUSH_BACK     ; ON      ; NOT_GATE_PUSH_BACK                            ;
+; CARRY_CNT_EN           ; SMART   ; Untyped                                       ;
+; LABWIDE_SCLR           ; ON      ; Untyped                                       ;
+; USE_NEW_VERSION        ; TRUE    ; Untyped                                       ;
+; CBXI_PARAMETER         ; NOTHING ; Untyped                                       ;
++------------------------+---------+-----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fsm_log:inst|lpm_shiftreg:shifter_M ;
++------------------------+---------+-----------------------------------------------+
+; Parameter Name         ; Value   ; Type                                          ;
++------------------------+---------+-----------------------------------------------+
+; LPM_WIDTH              ; 8       ; Untyped                                       ;
+; LPM_DIRECTION          ; LEFT    ; Untyped                                       ;
+; LPM_AVALUE             ; UNUSED  ; Untyped                                       ;
+; LPM_SVALUE             ; UNUSED  ; Untyped                                       ;
+; DEVICE_FAMILY          ; FLEX10K ; Untyped                                       ;
+; AUTO_CARRY_CHAINS      ; ON      ; AUTO_CARRY                                    ;
+; IGNORE_CARRY_BUFFERS   ; OFF     ; IGNORE_CARRY                                  ;
+; AUTO_CASCADE_CHAINS    ; ON      ; AUTO_CASCADE                                  ;
+; IGNORE_CASCADE_BUFFERS ; OFF     ; IGNORE_CASCADE                                ;
++------------------------+---------+-----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fsm_log:inst|lpm_shiftreg:shifter_X ;
++------------------------+---------+-----------------------------------------------+
+; Parameter Name         ; Value   ; Type                                          ;
++------------------------+---------+-----------------------------------------------+
+; LPM_WIDTH              ; 16      ; Untyped                                       ;
+; LPM_DIRECTION          ; LEFT    ; Untyped                                       ;
+; LPM_AVALUE             ; UNUSED  ; Untyped                                       ;
+; LPM_SVALUE             ; UNUSED  ; Untyped                                       ;
+; DEVICE_FAMILY          ; FLEX10K ; Untyped                                       ;
+; AUTO_CARRY_CHAINS      ; ON      ; AUTO_CARRY                                    ;
+; IGNORE_CARRY_BUFFERS   ; OFF     ; IGNORE_CARRY                                  ;
+; AUTO_CASCADE_CHAINS    ; ON      ; AUTO_CASCADE                                  ;
+; IGNORE_CASCADE_BUFFERS ; OFF     ; IGNORE_CASCADE                                ;
++------------------------+---------+-----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fsm_log:inst|lpm_mux:mux_X ;
++------------------------+---------+--------------------------------------+
+; Parameter Name         ; Value   ; Type                                 ;
++------------------------+---------+--------------------------------------+
+; AUTO_CARRY_CHAINS      ; ON      ; AUTO_CARRY                           ;
+; IGNORE_CARRY_BUFFERS   ; OFF     ; IGNORE_CARRY                         ;
+; AUTO_CASCADE_CHAINS    ; ON      ; AUTO_CASCADE                         ;
+; IGNORE_CASCADE_BUFFERS ; OFF     ; IGNORE_CASCADE                       ;
+; LPM_WIDTH              ; 16      ; Untyped                              ;
+; LPM_SIZE               ; 2       ; Untyped                              ;
+; LPM_WIDTHS             ; 1       ; Untyped                              ;
+; LPM_PIPELINE           ; 0       ; Untyped                              ;
+; CBXI_PARAMETER         ; mux_7dc ; Untyped                              ;
+; DEVICE_FAMILY          ; FLEX10K ; Untyped                              ;
++------------------------+---------+--------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fsm_log:inst|lpm_mult:cuadrado_X   ;
++------------------------------------------------+----------+---------------------+
+; Parameter Name                                 ; Value    ; Type                ;
++------------------------------------------------+----------+---------------------+
+; AUTO_CARRY_CHAINS                              ; ON       ; AUTO_CARRY          ;
+; IGNORE_CARRY_BUFFERS                           ; OFF      ; IGNORE_CARRY        ;
+; AUTO_CASCADE_CHAINS                            ; ON       ; AUTO_CASCADE        ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF      ; IGNORE_CASCADE      ;
+; LPM_WIDTHA                                     ; 16       ; Untyped             ;
+; LPM_WIDTHB                                     ; 16       ; Untyped             ;
+; LPM_WIDTHP                                     ; 17       ; Untyped             ;
+; LPM_WIDTHR                                     ; 0        ; Untyped             ;
+; LPM_WIDTHS                                     ; 1        ; Untyped             ;
+; LPM_REPRESENTATION                             ; UNSIGNED ; Untyped             ;
+; LPM_PIPELINE                                   ; 0        ; Untyped             ;
+; LATENCY                                        ; 0        ; Untyped             ;
+; INPUT_A_IS_CONSTANT                            ; NO       ; Untyped             ;
+; INPUT_B_IS_CONSTANT                            ; NO       ; Untyped             ;
+; USE_EAB                                        ; OFF      ; Untyped             ;
+; MAXIMIZE_SPEED                                 ; 5        ; Untyped             ;
+; DEVICE_FAMILY                                  ; FLEX10K  ; Untyped             ;
+; CARRY_CHAIN                                    ; MANUAL   ; Untyped             ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; Lut      ; TECH_MAPPER_APEX20K ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO     ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0        ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0        ; Untyped             ;
+; CBXI_PARAMETER                                 ; NOTHING  ; Untyped             ;
+; INPUT_A_FIXED_VALUE                            ; Bx       ; Untyped             ;
+; INPUT_B_FIXED_VALUE                            ; Bx       ; Untyped             ;
++------------------------------------------------+----------+---------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: fsm_log:inst|lpm_add_sub:op_1 ;
++------------------------+-------------+-----------------------------------------+
+; Parameter Name         ; Value       ; Type                                    ;
++------------------------+-------------+-----------------------------------------+
+; LPM_WIDTH              ; 12          ; Untyped                                 ;
+; LPM_REPRESENTATION     ; UNSIGNED    ; Untyped                                 ;
+; LPM_DIRECTION          ; DEFAULT     ; Untyped                                 ;
+; ONE_INPUT_IS_CONSTANT  ; YES         ; Untyped                                 ;
+; LPM_PIPELINE           ; 0           ; Untyped                                 ;
+; MAXIMIZE_SPEED         ; 5           ; Untyped                                 ;
+; REGISTERED_AT_END      ; 0           ; Untyped                                 ;
+; OPTIMIZE_FOR_SPEED     ; 1           ; Untyped                                 ;
+; USE_CS_BUFFERS         ; 1           ; Untyped                                 ;
+; CARRY_CHAIN            ; MANUAL      ; Untyped                                 ;
+; CARRY_CHAIN_LENGTH     ; 48          ; CARRY_CHAIN_LENGTH                      ;
+; DEVICE_FAMILY          ; FLEX10K     ; Untyped                                 ;
+; USE_WYS                ; OFF         ; Untyped                                 ;
+; STYLE                  ; FAST        ; Untyped                                 ;
+; CBXI_PARAMETER         ; add_sub_9og ; Untyped                                 ;
+; AUTO_CARRY_CHAINS      ; ON          ; AUTO_CARRY                              ;
+; IGNORE_CARRY_BUFFERS   ; OFF         ; IGNORE_CARRY                            ;
+; AUTO_CASCADE_CHAINS    ; ON          ; AUTO_CASCADE                            ;
+; IGNORE_CASCADE_BUFFERS ; OFF         ; IGNORE_CASCADE                          ;
++------------------------+-------------+-----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; lpm_shiftreg Parameter Settings by Entity Instance               ;
++----------------------------+-------------------------------------+
+; Name                       ; Value                               ;
++----------------------------+-------------------------------------+
+; Number of entity instances ; 2                                   ;
+; Entity Instance            ; fsm_log:inst|lpm_shiftreg:shifter_M ;
+;     -- LPM_WIDTH           ; 8                                   ;
+;     -- LPM_DIRECTION       ; LEFT                                ;
+; Entity Instance            ; fsm_log:inst|lpm_shiftreg:shifter_X ;
+;     -- LPM_WIDTH           ; 16                                  ;
+;     -- LPM_DIRECTION       ; LEFT                                ;
++----------------------------+-------------------------------------+
+
+
++--------------------------------------------------------------------------+
+; lpm_mult Parameter Settings by Entity Instance                           ;
++---------------------------------------+----------------------------------+
+; Name                                  ; Value                            ;
++---------------------------------------+----------------------------------+
+; Number of entity instances            ; 1                                ;
+; Entity Instance                       ; fsm_log:inst|lpm_mult:cuadrado_X ;
+;     -- LPM_WIDTHA                     ; 16                               ;
+;     -- LPM_WIDTHB                     ; 16                               ;
+;     -- LPM_WIDTHP                     ; 17                               ;
+;     -- LPM_REPRESENTATION             ; UNSIGNED                         ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                               ;
+;     -- INPUT_B_IS_CONSTANT            ; NO                               ;
+;     -- USE_EAB                        ; OFF                              ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                             ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                               ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                               ;
++---------------------------------------+----------------------------------+
+
+
++--------------------------------+
+; Analysis & Synthesis Equations ;
++--------------------------------+
+The equations can be found in L:/My Works/Ingeniería Electrónica/Semestre VI/Sistemas Digitales II/Logaritmo Binario 4 (X16 Y13) Mejorado/LogBin.map.eqn.
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II Analysis & Synthesis
+    Info: Version 5.0 Build 148 04/26/2005 SJ Full Version
+    Info: Processing started: Mon May 26 22:57:23 2008
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off LogBin -c LogBin
+Info: Found 1 design units, including 1 entities, in source file AHDL_PROBE.tdf
+    Info: Found entity 1: ahdl_probe
+Info: Found 1 design units, including 1 entities, in source file FSM_LOG.tdf
+    Info: Found entity 1: fsm_log
+Info: Found 1 design units, including 1 entities, in source file LogBin.bdf
+    Info: Found entity 1: LogBin
+Info: Elaborating entity "LogBin" for the top level hierarchy
+Info: Elaborating entity "fsm_log" for hierarchy "fsm_log:inst"
+Info: Found 1 design units, including 1 entities, in source file c:/archivos de programa/altera/quartus50/libraries/megafunctions/lpm_counter.tdf
+    Info: Found entity 1: lpm_counter
+Info: Elaborating entity "lpm_counter" for hierarchy "fsm_log:inst|lpm_counter:contador_C"
+Info: Found 1 design units, including 1 entities, in source file c:/archivos de programa/altera/quartus50/libraries/megafunctions/alt_counter_f10ke.tdf
+    Info: Found entity 1: alt_counter_f10ke
+Info: Elaborating entity "alt_counter_f10ke" for hierarchy "fsm_log:inst|lpm_counter:contador_C|alt_counter_f10ke:wysi_counter"
+Info: Elaborating entity "lpm_counter" for hierarchy "fsm_log:inst|lpm_counter:contador_Q"
+Info: Elaborating entity "alt_counter_f10ke" for hierarchy "fsm_log:inst|lpm_counter:contador_Q|alt_counter_f10ke:wysi_counter"
+Info: Found 1 design units, including 1 entities, in source file c:/archivos de programa/altera/quartus50/libraries/megafunctions/lpm_shiftreg.tdf
+    Info: Found entity 1: lpm_shiftreg
+Info: Elaborating entity "lpm_shiftreg" for hierarchy "fsm_log:inst|lpm_shiftreg:shifter_M"
+Info: Elaborating entity "lpm_shiftreg" for hierarchy "fsm_log:inst|lpm_shiftreg:shifter_X"
+Info: Found 1 design units, including 1 entities, in source file c:/archivos de programa/altera/quartus50/libraries/megafunctions/lpm_mux.tdf
+    Info: Found entity 1: lpm_mux
+Info: Elaborating entity "lpm_mux" for hierarchy "fsm_log:inst|lpm_mux:mux_X"
+Info: Found 1 design units, including 1 entities, in source file c:/archivos de programa/altera/quartus50/libraries/megafunctions/altshift.tdf
+    Info: Found entity 1: altshift
+Info: Elaborating entity "altshift" for hierarchy "fsm_log:inst|lpm_mux:mux_X|altshift:external_latency_ffs"
+Info: Found 1 design units, including 1 entities, in source file c:/archivos de programa/altera/quartus50/libraries/megafunctions/muxlut.tdf
+    Info: Found entity 1: muxlut
+Info: Elaborating entity "muxlut" for hierarchy "fsm_log:inst|lpm_mux:mux_X|muxlut:$00009"
+Info: Found 1 design units, including 1 entities, in source file c:/archivos de programa/altera/quartus50/libraries/megafunctions/lpm_mult.tdf
+    Info: Found entity 1: lpm_mult
+Info: Elaborating entity "lpm_mult" for hierarchy "fsm_log:inst|lpm_mult:cuadrado_X"
+Info: Issued messages during elaboration of megafunction "fsm_log:inst|lpm_mult:cuadrado_X"
+Warning: Assertion warning: Value of LPM_WIDTHP parameter is too low -- 15 least significant bits of the result have been discarded
+Info: Found 1 design units, including 1 entities, in source file c:/archivos de programa/altera/quartus50/libraries/megafunctions/multcore.tdf
+    Info: Found entity 1: multcore
+Info: Elaborating entity "multcore" for hierarchy "fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core"
+Info: Found 1 design units, including 1 entities, in source file c:/archivos de programa/altera/quartus50/libraries/megafunctions/mul_boothc.tdf
+    Info: Found entity 1: mul_boothc
+Info: Elaborating entity "mul_boothc" for hierarchy "fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mul_boothc:booth_enc"
+Info: Found 1 design units, including 1 entities, in source file c:/archivos de programa/altera/quartus50/libraries/megafunctions/mpar_add.tdf
+    Info: Found entity 1: mpar_add
+Info: Elaborating entity "mpar_add" for hierarchy "fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder"
+Info: Found 1 design units, including 1 entities, in source file c:/archivos de programa/altera/quartus50/libraries/megafunctions/lpm_add_sub.tdf
+    Info: Found entity 1: lpm_add_sub
+Info: Elaborating entity "lpm_add_sub" for hierarchy "fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[4]"
+Info: Found 1 design units, including 1 entities, in source file c:/archivos de programa/altera/quartus50/libraries/megafunctions/addcore.tdf
+    Info: Found entity 1: addcore
+Info: Elaborating entity "addcore" for hierarchy "fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[4]|addcore:adder"
+Info: Found 1 design units, including 1 entities, in source file c:/archivos de programa/altera/quartus50/libraries/megafunctions/a_csnbuffer.tdf
+    Info: Found entity 1: a_csnbuffer
+Info: Elaborating entity "a_csnbuffer" for hierarchy "fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[4]|addcore:adder|a_csnbuffer:oflow_node"
+Info: Elaborating entity "a_csnbuffer" for hierarchy "fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[4]|addcore:adder|a_csnbuffer:result_node"
+Info: Elaborating entity "altshift" for hierarchy "fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[4]|altshift:result_ext_latency_ffs"
+Info: Elaborating entity "altshift" for hierarchy "fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[4]|altshift:carry_ext_latency_ffs"
+Info: Elaborating entity "lpm_add_sub" for hierarchy "fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[3]"
+Info: Elaborating entity "addcore" for hierarchy "fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[3]|addcore:adder"
+Info: Elaborating entity "mpar_add" for hierarchy "fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add"
+Info: Elaborating entity "lpm_add_sub" for hierarchy "fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[1]"
+Info: Elaborating entity "addcore" for hierarchy "fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[1]|addcore:adder"
+Info: Elaborating entity "a_csnbuffer" for hierarchy "fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[1]|addcore:adder|a_csnbuffer:oflow_node"
+Info: Elaborating entity "a_csnbuffer" for hierarchy "fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[1]|addcore:adder|a_csnbuffer:result_node"
+Info: Elaborating entity "altshift" for hierarchy "fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[1]|altshift:result_ext_latency_ffs"
+Info: Elaborating entity "mpar_add" for hierarchy "fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|mpar_add:sub_par_add"
+Info: Elaborating entity "lpm_add_sub" for hierarchy "fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|mpar_add:sub_par_add|lpm_add_sub:adder[0]"
+Info: Elaborating entity "addcore" for hierarchy "fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|mpar_add:sub_par_add|lpm_add_sub:adder[0]|addcore:adder"
+Info: Elaborating entity "a_csnbuffer" for hierarchy "fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|mpar_add:sub_par_add|lpm_add_sub:adder[0]|addcore:adder|a_csnbuffer:oflow_node"
+Info: Elaborating entity "a_csnbuffer" for hierarchy "fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|mpar_add:sub_par_add|lpm_add_sub:adder[0]|addcore:adder|a_csnbuffer:result_node"
+Info: Elaborating entity "altshift" for hierarchy "fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|mpar_add:sub_par_add|lpm_add_sub:adder[0]|altshift:result_ext_latency_ffs"
+Info: Elaborating entity "mpar_add" for hierarchy "fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|mpar_add:sub_par_add|mpar_add:sub_par_add"
+Info: Elaborating entity "lpm_add_sub" for hierarchy "fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|mpar_add:sub_par_add|mpar_add:sub_par_add|lpm_add_sub:adder[0]"
+Info: Elaborating entity "addcore" for hierarchy "fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|mpar_add:sub_par_add|mpar_add:sub_par_add|lpm_add_sub:adder[0]|addcore:adder"
+Info: Elaborating entity "a_csnbuffer" for hierarchy "fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|mpar_add:sub_par_add|mpar_add:sub_par_add|lpm_add_sub:adder[0]|addcore:adder|a_csnbuffer:oflow_node"
+Info: Elaborating entity "a_csnbuffer" for hierarchy "fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|mpar_add:sub_par_add|mpar_add:sub_par_add|lpm_add_sub:adder[0]|addcore:adder|a_csnbuffer:result_node"
+Info: Elaborating entity "altshift" for hierarchy "fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|mpar_add:sub_par_add|mpar_add:sub_par_add|lpm_add_sub:adder[0]|altshift:result_ext_latency_ffs"
+Info: Elaborating entity "altshift" for hierarchy "fsm_log:inst|lpm_mult:cuadrado_X|altshift:external_latency_ffs"
+Info: State machine "|LogBin|fsm_log:inst|ss" contains 5 states and 13 state bits
+Info: Selected Auto state machine encoding method for state machine "|LogBin|fsm_log:inst|ss"
+Warning: State machine "|LogBin|fsm_log:inst|ss" must be reset to ensure proper operation
+Info: Encoding result for state machine "|LogBin|fsm_log:inst|ss"
+    Info: Completed encoding using 5 state bits
+        Info: Encoded state bit "fsm_log:inst|s3"
+        Info: Encoded state bit "fsm_log:inst|s1"
+        Info: Encoded state bit "fsm_log:inst|s2"
+        Info: Encoded state bit "fsm_log:inst|s4"
+        Info: Encoded state bit "fsm_log:inst|s0"
+    Info: State "|LogBin|fsm_log:inst|s0" uses code string "01101"
+    Info: State "|LogBin|fsm_log:inst|s1" uses code string "00100"
+    Info: State "|LogBin|fsm_log:inst|s2" uses code string "01000"
+    Info: State "|LogBin|fsm_log:inst|s3" uses code string "11100"
+    Info: State "|LogBin|fsm_log:inst|s4" uses code string "01110"
+Info: Duplicate registers merged to single register
+    Info: Duplicate register "fsm_log:inst|shift_regM" merged to single register "fsm_log:inst|s4"
+    Info: Duplicate register "fsm_log:inst|dec_Q" merged to single register "fsm_log:inst|s4"
+    Info: Duplicate register "fsm_log:inst|load_Q" merged to single register "fsm_log:inst|load_C"
+Info: Duplicate registers merged to single register
+    Info: Duplicate register "fsm_log:inst|loadshift_regX" merged to single register "fsm_log:inst|estados[0]"
+Info: Converted 1 single input CARRY primitives to CARRY_SUM primitives
+Info: Implemented 509 device resources after synthesis - the final resource count might be different
+    Info: Implemented 19 input pins
+    Info: Implemented 31 output pins
+    Info: Implemented 459 logic cells
+Info: Quartus II Analysis & Synthesis was successful. 0 errors, 2 warnings
+    Info: Processing ended: Mon May 26 22:57:32 2008
+    Info: Elapsed time: 00:00:09
+
+

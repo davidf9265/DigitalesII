@@ -1,0 +1,588 @@
+Timing Analyzer report for LogBin
+Mon May 26 22:58:00 2008
+Version 5.0 Build 148 04/26/2005 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Timing Analyzer Summary
+  3. Timing Analyzer Settings
+  4. Clock Settings Summary
+  5. Clock Setup: 'CLK'
+  6. tsu
+  7. tco
+  8. th
+  9. Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2005 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic       
+functions, and any output files any of the foregoing           
+(including device programming or simulation files), and any    
+associated documentation or information are expressly subject  
+to the terms and conditions of the Altera Program License      
+Subscription Agreement, Altera MegaCore Function License       
+Agreement, or other applicable license agreement, including,   
+without limitation, that your use is for the sole purpose of   
+programming logic devices manufactured by Altera and sold by   
+Altera or its authorized distributors.  Please refer to the    
+applicable agreement for further details.
+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Summary                                                                                                                                                                                                                                 ;
++------------------------------+-------+---------------+----------------------------------+-------------------------------------------------------------------------+----------------------------------------------+------------+----------+--------------+
+; Type                         ; Slack ; Required Time ; Actual Time                      ; From                                                                    ; To                                           ; From Clock ; To Clock ; Failed Paths ;
++------------------------------+-------+---------------+----------------------------------+-------------------------------------------------------------------------+----------------------------------------------+------------+----------+--------------+
+; Worst-case tsu               ; N/A   ; None          ; 24.000 ns                        ; NUM[1]                                                                  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[1]  ;            ; CLK      ; 0            ;
+; Worst-case tco               ; N/A   ; None          ; 31.500 ns                        ; fsm_log:inst|lpm_counter:contador_C|alt_counter_f10ke:wysi_counter|q[4] ; Y[10]                                        ; CLK        ;          ; 0            ;
+; Worst-case th                ; N/A   ; None          ; -1.500 ns                        ; START                                                                   ; fsm_log:inst|estados[0]                      ;            ; CLK      ; 0            ;
+; Clock Setup: 'CLK'           ; N/A   ; None          ; 15.95 MHz ( period = 62.700 ns ) ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[4]                             ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[15] ; CLK        ; CLK      ; 0            ;
+; Total number of failed paths ;       ;               ;                                  ;                                                                         ;                                              ;            ;          ; 0            ;
++------------------------------+-------+---------------+----------------------------------+-------------------------------------------------------------------------+----------------------------------------------+------------+----------+--------------+
+
+
++------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Settings                                                                             ;
++-------------------------------------------------------+--------------------+------+----+-------------+
+; Option                                                ; Setting            ; From ; To ; Entity Name ;
++-------------------------------------------------------+--------------------+------+----+-------------+
+; Device Name                                           ; EPF10K70RC240-4    ;      ;    ;             ;
+; Timing Models                                         ; Final              ;      ;    ;             ;
+; Number of source nodes to report per destination node ; 10                 ;      ;    ;             ;
+; Number of destination nodes to report                 ; 10                 ;      ;    ;             ;
+; Number of paths to report                             ; 200                ;      ;    ;             ;
+; Report Minimum Timing Checks                          ; Off                ;      ;    ;             ;
+; Use Fast Timing Models                                ; Off                ;      ;    ;             ;
+; Report IO Paths Separately                            ; Off                ;      ;    ;             ;
+; Default hold multicycle                               ; Same as Multicycle ;      ;    ;             ;
+; Cut paths between unrelated clock domains             ; On                 ;      ;    ;             ;
+; Cut off read during write signal paths                ; On                 ;      ;    ;             ;
+; Cut off feedback from I/O pins                        ; On                 ;      ;    ;             ;
+; Report Combined Fast/Slow Timing                      ; Off                ;      ;    ;             ;
+; Ignore Clock Settings                                 ; Off                ;      ;    ;             ;
+; Analyze latches as synchronous elements               ; Off                ;      ;    ;             ;
+; Enable Recovery/Removal analysis                      ; Off                ;      ;    ;             ;
+; Enable Clock Latency                                  ; Off                ;      ;    ;             ;
++-------------------------------------------------------+--------------------+------+----+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Settings Summary                                                                                                                                                             ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+; Clock Node Name ; Clock Setting Name ; Type     ; Fmax Requirement ; Early Latency ; Late Latency ; Based on ; Multiply Base Fmax by ; Divide Base Fmax by ; Offset ; Phase offset ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+; CLK             ;                    ; User Pin ; NONE             ; 0.000 ns      ; 0.000 ns     ; NONE     ; N/A                   ; N/A                 ; N/A    ;              ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Setup: 'CLK'                                                                                                                                                                                                                                                                                      ;
++-----------------------------------------+-----------------------------------------------------+----------------------------------------------+----------------------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; Slack                                   ; Actual fmax (period)                                ; From                                         ; To                                           ; From Clock ; To Clock ; Required Setup Relationship ; Required Longest P2P Time ; Actual Longest P2P Time ;
++-----------------------------------------+-----------------------------------------------------+----------------------------------------------+----------------------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; N/A                                     ; 15.95 MHz ( period = 62.700 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[4]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[15] ; CLK        ; CLK      ; None                        ; None                      ; 58.700 ns               ;
+; N/A                                     ; 15.97 MHz ( period = 62.600 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[3]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[15] ; CLK        ; CLK      ; None                        ; None                      ; 58.600 ns               ;
+; N/A                                     ; 16.10 MHz ( period = 62.100 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[4]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[13] ; CLK        ; CLK      ; None                        ; None                      ; 58.100 ns               ;
+; N/A                                     ; 16.13 MHz ( period = 62.000 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[4]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[1]  ; CLK        ; CLK      ; None                        ; None                      ; 58.000 ns               ;
+; N/A                                     ; 16.13 MHz ( period = 62.000 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[3]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[13] ; CLK        ; CLK      ; None                        ; None                      ; 58.000 ns               ;
+; N/A                                     ; 16.16 MHz ( period = 61.900 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[3]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[1]  ; CLK        ; CLK      ; None                        ; None                      ; 57.900 ns               ;
+; N/A                                     ; 16.18 MHz ( period = 61.800 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[4]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[12] ; CLK        ; CLK      ; None                        ; None                      ; 57.800 ns               ;
+; N/A                                     ; 16.21 MHz ( period = 61.700 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[3]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[12] ; CLK        ; CLK      ; None                        ; None                      ; 57.700 ns               ;
+; N/A                                     ; 16.26 MHz ( period = 61.500 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[4]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[11] ; CLK        ; CLK      ; None                        ; None                      ; 57.500 ns               ;
+; N/A                                     ; 16.26 MHz ( period = 61.500 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[5]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[15] ; CLK        ; CLK      ; None                        ; None                      ; 57.500 ns               ;
+; N/A                                     ; 16.29 MHz ( period = 61.400 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[3]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[11] ; CLK        ; CLK      ; None                        ; None                      ; 57.400 ns               ;
+; N/A                                     ; 16.29 MHz ( period = 61.400 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[9]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[15] ; CLK        ; CLK      ; None                        ; None                      ; 57.400 ns               ;
+; N/A                                     ; 16.31 MHz ( period = 61.300 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[8]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[15] ; CLK        ; CLK      ; None                        ; None                      ; 57.300 ns               ;
+; N/A                                     ; 16.34 MHz ( period = 61.200 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[10] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[15] ; CLK        ; CLK      ; None                        ; None                      ; 57.200 ns               ;
+; N/A                                     ; 16.39 MHz ( period = 61.000 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[1]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[15] ; CLK        ; CLK      ; None                        ; None                      ; 57.000 ns               ;
+; N/A                                     ; 16.42 MHz ( period = 60.900 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[5]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[13] ; CLK        ; CLK      ; None                        ; None                      ; 56.900 ns               ;
+; N/A                                     ; 16.45 MHz ( period = 60.800 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[5]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[1]  ; CLK        ; CLK      ; None                        ; None                      ; 56.800 ns               ;
+; N/A                                     ; 16.45 MHz ( period = 60.800 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[9]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[13] ; CLK        ; CLK      ; None                        ; None                      ; 56.800 ns               ;
+; N/A                                     ; 16.45 MHz ( period = 60.800 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[0]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[15] ; CLK        ; CLK      ; None                        ; None                      ; 56.800 ns               ;
+; N/A                                     ; 16.47 MHz ( period = 60.700 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[9]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[1]  ; CLK        ; CLK      ; None                        ; None                      ; 56.700 ns               ;
+; N/A                                     ; 16.47 MHz ( period = 60.700 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[8]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[13] ; CLK        ; CLK      ; None                        ; None                      ; 56.700 ns               ;
+; N/A                                     ; 16.50 MHz ( period = 60.600 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[8]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[1]  ; CLK        ; CLK      ; None                        ; None                      ; 56.600 ns               ;
+; N/A                                     ; 16.50 MHz ( period = 60.600 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[5]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[12] ; CLK        ; CLK      ; None                        ; None                      ; 56.600 ns               ;
+; N/A                                     ; 16.50 MHz ( period = 60.600 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[10] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[13] ; CLK        ; CLK      ; None                        ; None                      ; 56.600 ns               ;
+; N/A                                     ; 16.53 MHz ( period = 60.500 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[10] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[1]  ; CLK        ; CLK      ; None                        ; None                      ; 56.500 ns               ;
+; N/A                                     ; 16.53 MHz ( period = 60.500 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[9]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[12] ; CLK        ; CLK      ; None                        ; None                      ; 56.500 ns               ;
+; N/A                                     ; 16.56 MHz ( period = 60.400 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[8]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[12] ; CLK        ; CLK      ; None                        ; None                      ; 56.400 ns               ;
+; N/A                                     ; 16.56 MHz ( period = 60.400 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[1]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[13] ; CLK        ; CLK      ; None                        ; None                      ; 56.400 ns               ;
+; N/A                                     ; 16.56 MHz ( period = 60.400 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[6]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[15] ; CLK        ; CLK      ; None                        ; None                      ; 56.400 ns               ;
+; N/A                                     ; 16.56 MHz ( period = 60.400 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[7]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[15] ; CLK        ; CLK      ; None                        ; None                      ; 56.400 ns               ;
+; N/A                                     ; 16.58 MHz ( period = 60.300 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[1]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[1]  ; CLK        ; CLK      ; None                        ; None                      ; 56.300 ns               ;
+; N/A                                     ; 16.58 MHz ( period = 60.300 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[5]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[11] ; CLK        ; CLK      ; None                        ; None                      ; 56.300 ns               ;
+; N/A                                     ; 16.58 MHz ( period = 60.300 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[10] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[12] ; CLK        ; CLK      ; None                        ; None                      ; 56.300 ns               ;
+; N/A                                     ; 16.61 MHz ( period = 60.200 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[9]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[11] ; CLK        ; CLK      ; None                        ; None                      ; 56.200 ns               ;
+; N/A                                     ; 16.61 MHz ( period = 60.200 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[0]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[13] ; CLK        ; CLK      ; None                        ; None                      ; 56.200 ns               ;
+; N/A                                     ; 16.61 MHz ( period = 60.200 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[2]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[15] ; CLK        ; CLK      ; None                        ; None                      ; 56.200 ns               ;
+; N/A                                     ; 16.64 MHz ( period = 60.100 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[0]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[1]  ; CLK        ; CLK      ; None                        ; None                      ; 56.100 ns               ;
+; N/A                                     ; 16.64 MHz ( period = 60.100 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[8]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[11] ; CLK        ; CLK      ; None                        ; None                      ; 56.100 ns               ;
+; N/A                                     ; 16.64 MHz ( period = 60.100 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[1]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[12] ; CLK        ; CLK      ; None                        ; None                      ; 56.100 ns               ;
+; N/A                                     ; 16.67 MHz ( period = 60.000 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[10] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[11] ; CLK        ; CLK      ; None                        ; None                      ; 56.000 ns               ;
+; N/A                                     ; 16.69 MHz ( period = 59.900 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[0]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[12] ; CLK        ; CLK      ; None                        ; None                      ; 55.900 ns               ;
+; N/A                                     ; 16.72 MHz ( period = 59.800 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[1]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[11] ; CLK        ; CLK      ; None                        ; None                      ; 55.800 ns               ;
+; N/A                                     ; 16.72 MHz ( period = 59.800 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[6]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[13] ; CLK        ; CLK      ; None                        ; None                      ; 55.800 ns               ;
+; N/A                                     ; 16.72 MHz ( period = 59.800 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[7]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[13] ; CLK        ; CLK      ; None                        ; None                      ; 55.800 ns               ;
+; N/A                                     ; 16.75 MHz ( period = 59.700 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[6]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[1]  ; CLK        ; CLK      ; None                        ; None                      ; 55.700 ns               ;
+; N/A                                     ; 16.75 MHz ( period = 59.700 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[7]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[1]  ; CLK        ; CLK      ; None                        ; None                      ; 55.700 ns               ;
+; N/A                                     ; 16.78 MHz ( period = 59.600 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[4]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[2]  ; CLK        ; CLK      ; None                        ; None                      ; 55.600 ns               ;
+; N/A                                     ; 16.78 MHz ( period = 59.600 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[0]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[11] ; CLK        ; CLK      ; None                        ; None                      ; 55.600 ns               ;
+; N/A                                     ; 16.78 MHz ( period = 59.600 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[2]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[13] ; CLK        ; CLK      ; None                        ; None                      ; 55.600 ns               ;
+; N/A                                     ; 16.81 MHz ( period = 59.500 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[3]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[2]  ; CLK        ; CLK      ; None                        ; None                      ; 55.500 ns               ;
+; N/A                                     ; 16.81 MHz ( period = 59.500 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[2]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[1]  ; CLK        ; CLK      ; None                        ; None                      ; 55.500 ns               ;
+; N/A                                     ; 16.81 MHz ( period = 59.500 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[6]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[12] ; CLK        ; CLK      ; None                        ; None                      ; 55.500 ns               ;
+; N/A                                     ; 16.81 MHz ( period = 59.500 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[7]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[12] ; CLK        ; CLK      ; None                        ; None                      ; 55.500 ns               ;
+; N/A                                     ; 16.86 MHz ( period = 59.300 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[2]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[12] ; CLK        ; CLK      ; None                        ; None                      ; 55.300 ns               ;
+; N/A                                     ; 16.89 MHz ( period = 59.200 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[4]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[7]  ; CLK        ; CLK      ; None                        ; None                      ; 55.200 ns               ;
+; N/A                                     ; 16.89 MHz ( period = 59.200 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[6]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[11] ; CLK        ; CLK      ; None                        ; None                      ; 55.200 ns               ;
+; N/A                                     ; 16.89 MHz ( period = 59.200 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[7]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[11] ; CLK        ; CLK      ; None                        ; None                      ; 55.200 ns               ;
+; N/A                                     ; 16.92 MHz ( period = 59.100 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[3]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[7]  ; CLK        ; CLK      ; None                        ; None                      ; 55.100 ns               ;
+; N/A                                     ; 16.95 MHz ( period = 59.000 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[2]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[11] ; CLK        ; CLK      ; None                        ; None                      ; 55.000 ns               ;
+; N/A                                     ; 16.98 MHz ( period = 58.900 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[4]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[6]  ; CLK        ; CLK      ; None                        ; None                      ; 54.900 ns               ;
+; N/A                                     ; 16.98 MHz ( period = 58.900 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[4]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[0]  ; CLK        ; CLK      ; None                        ; None                      ; 54.900 ns               ;
+; N/A                                     ; 16.98 MHz ( period = 58.900 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[11] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[15] ; CLK        ; CLK      ; None                        ; None                      ; 54.900 ns               ;
+; N/A                                     ; 17.01 MHz ( period = 58.800 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[3]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[6]  ; CLK        ; CLK      ; None                        ; None                      ; 54.800 ns               ;
+; N/A                                     ; 17.01 MHz ( period = 58.800 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[3]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[0]  ; CLK        ; CLK      ; None                        ; None                      ; 54.800 ns               ;
+; N/A                                     ; 17.06 MHz ( period = 58.600 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[4]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[5]  ; CLK        ; CLK      ; None                        ; None                      ; 54.600 ns               ;
+; N/A                                     ; 17.09 MHz ( period = 58.500 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[3]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[5]  ; CLK        ; CLK      ; None                        ; None                      ; 54.500 ns               ;
+; N/A                                     ; 17.12 MHz ( period = 58.400 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[5]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[2]  ; CLK        ; CLK      ; None                        ; None                      ; 54.400 ns               ;
+; N/A                                     ; 17.15 MHz ( period = 58.300 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[9]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[2]  ; CLK        ; CLK      ; None                        ; None                      ; 54.300 ns               ;
+; N/A                                     ; 17.15 MHz ( period = 58.300 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[11] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[13] ; CLK        ; CLK      ; None                        ; None                      ; 54.300 ns               ;
+; N/A                                     ; 17.18 MHz ( period = 58.200 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[8]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[2]  ; CLK        ; CLK      ; None                        ; None                      ; 54.200 ns               ;
+; N/A                                     ; 17.18 MHz ( period = 58.200 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[11] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[1]  ; CLK        ; CLK      ; None                        ; None                      ; 54.200 ns               ;
+; N/A                                     ; 17.18 MHz ( period = 58.200 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[4]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[14] ; CLK        ; CLK      ; None                        ; None                      ; 54.200 ns               ;
+; N/A                                     ; 17.21 MHz ( period = 58.100 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[10] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[2]  ; CLK        ; CLK      ; None                        ; None                      ; 54.100 ns               ;
+; N/A                                     ; 17.21 MHz ( period = 58.100 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[3]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[10] ; CLK        ; CLK      ; None                        ; None                      ; 54.100 ns               ;
+; N/A                                     ; 17.21 MHz ( period = 58.100 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[3]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[14] ; CLK        ; CLK      ; None                        ; None                      ; 54.100 ns               ;
+; N/A                                     ; 17.24 MHz ( period = 58.000 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[5]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[7]  ; CLK        ; CLK      ; None                        ; None                      ; 54.000 ns               ;
+; N/A                                     ; 17.24 MHz ( period = 58.000 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[4]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[10] ; CLK        ; CLK      ; None                        ; None                      ; 54.000 ns               ;
+; N/A                                     ; 17.24 MHz ( period = 58.000 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[11] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[12] ; CLK        ; CLK      ; None                        ; None                      ; 54.000 ns               ;
+; N/A                                     ; 17.27 MHz ( period = 57.900 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[9]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[7]  ; CLK        ; CLK      ; None                        ; None                      ; 53.900 ns               ;
+; N/A                                     ; 17.27 MHz ( period = 57.900 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[1]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[2]  ; CLK        ; CLK      ; None                        ; None                      ; 53.900 ns               ;
+; N/A                                     ; 17.27 MHz ( period = 57.900 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[3]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[9]  ; CLK        ; CLK      ; None                        ; None                      ; 53.900 ns               ;
+; N/A                                     ; 17.30 MHz ( period = 57.800 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[8]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[7]  ; CLK        ; CLK      ; None                        ; None                      ; 53.800 ns               ;
+; N/A                                     ; 17.30 MHz ( period = 57.800 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[4]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[9]  ; CLK        ; CLK      ; None                        ; None                      ; 53.800 ns               ;
+; N/A                                     ; 17.33 MHz ( period = 57.700 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[10] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[7]  ; CLK        ; CLK      ; None                        ; None                      ; 53.700 ns               ;
+; N/A                                     ; 17.33 MHz ( period = 57.700 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[5]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[6]  ; CLK        ; CLK      ; None                        ; None                      ; 53.700 ns               ;
+; N/A                                     ; 17.33 MHz ( period = 57.700 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[0]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[2]  ; CLK        ; CLK      ; None                        ; None                      ; 53.700 ns               ;
+; N/A                                     ; 17.33 MHz ( period = 57.700 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[5]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[0]  ; CLK        ; CLK      ; None                        ; None                      ; 53.700 ns               ;
+; N/A                                     ; 17.33 MHz ( period = 57.700 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[11] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[11] ; CLK        ; CLK      ; None                        ; None                      ; 53.700 ns               ;
+; N/A                                     ; 17.36 MHz ( period = 57.600 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[9]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[6]  ; CLK        ; CLK      ; None                        ; None                      ; 53.600 ns               ;
+; N/A                                     ; 17.39 MHz ( period = 57.500 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[4]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[8]  ; CLK        ; CLK      ; None                        ; None                      ; 53.500 ns               ;
+; N/A                                     ; 17.39 MHz ( period = 57.500 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[1]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[7]  ; CLK        ; CLK      ; None                        ; None                      ; 53.500 ns               ;
+; N/A                                     ; 17.39 MHz ( period = 57.500 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[8]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[6]  ; CLK        ; CLK      ; None                        ; None                      ; 53.500 ns               ;
+; N/A                                     ; 17.42 MHz ( period = 57.400 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[3]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[8]  ; CLK        ; CLK      ; None                        ; None                      ; 53.400 ns               ;
+; N/A                                     ; 17.42 MHz ( period = 57.400 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[10] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[6]  ; CLK        ; CLK      ; None                        ; None                      ; 53.400 ns               ;
+; N/A                                     ; 17.42 MHz ( period = 57.400 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[5]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[5]  ; CLK        ; CLK      ; None                        ; None                      ; 53.400 ns               ;
+; N/A                                     ; 17.42 MHz ( period = 57.400 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[12] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[15] ; CLK        ; CLK      ; None                        ; None                      ; 53.400 ns               ;
+; N/A                                     ; 17.45 MHz ( period = 57.300 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[0]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[7]  ; CLK        ; CLK      ; None                        ; None                      ; 53.300 ns               ;
+; N/A                                     ; 17.45 MHz ( period = 57.300 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[9]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[5]  ; CLK        ; CLK      ; None                        ; None                      ; 53.300 ns               ;
+; N/A                                     ; 17.45 MHz ( period = 57.300 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[6]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[2]  ; CLK        ; CLK      ; None                        ; None                      ; 53.300 ns               ;
+; N/A                                     ; 17.45 MHz ( period = 57.300 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[7]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[2]  ; CLK        ; CLK      ; None                        ; None                      ; 53.300 ns               ;
+; N/A                                     ; 17.45 MHz ( period = 57.300 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[13] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[15] ; CLK        ; CLK      ; None                        ; None                      ; 53.300 ns               ;
+; N/A                                     ; 17.48 MHz ( period = 57.200 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[1]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[6]  ; CLK        ; CLK      ; None                        ; None                      ; 53.200 ns               ;
+; N/A                                     ; 17.48 MHz ( period = 57.200 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[8]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[5]  ; CLK        ; CLK      ; None                        ; None                      ; 53.200 ns               ;
+; N/A                                     ; 17.48 MHz ( period = 57.200 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[1]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[0]  ; CLK        ; CLK      ; None                        ; None                      ; 53.200 ns               ;
+; N/A                                     ; 17.48 MHz ( period = 57.200 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[9]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[0]  ; CLK        ; CLK      ; None                        ; None                      ; 53.200 ns               ;
+; N/A                                     ; 17.51 MHz ( period = 57.100 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[10] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[5]  ; CLK        ; CLK      ; None                        ; None                      ; 53.100 ns               ;
+; N/A                                     ; 17.51 MHz ( period = 57.100 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[2]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[2]  ; CLK        ; CLK      ; None                        ; None                      ; 53.100 ns               ;
+; N/A                                     ; 17.51 MHz ( period = 57.100 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[8]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[0]  ; CLK        ; CLK      ; None                        ; None                      ; 53.100 ns               ;
+; N/A                                     ; 17.51 MHz ( period = 57.100 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[9]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[10] ; CLK        ; CLK      ; None                        ; None                      ; 53.100 ns               ;
+; N/A                                     ; 17.54 MHz ( period = 57.000 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[0]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[6]  ; CLK        ; CLK      ; None                        ; None                      ; 53.000 ns               ;
+; N/A                                     ; 17.54 MHz ( period = 57.000 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[0]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[0]  ; CLK        ; CLK      ; None                        ; None                      ; 53.000 ns               ;
+; N/A                                     ; 17.54 MHz ( period = 57.000 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[8]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[10] ; CLK        ; CLK      ; None                        ; None                      ; 53.000 ns               ;
+; N/A                                     ; 17.54 MHz ( period = 57.000 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[5]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[14] ; CLK        ; CLK      ; None                        ; None                      ; 53.000 ns               ;
+; N/A                                     ; 17.57 MHz ( period = 56.900 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[6]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[7]  ; CLK        ; CLK      ; None                        ; None                      ; 52.900 ns               ;
+; N/A                                     ; 17.57 MHz ( period = 56.900 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[7]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[7]  ; CLK        ; CLK      ; None                        ; None                      ; 52.900 ns               ;
+; N/A                                     ; 17.57 MHz ( period = 56.900 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[1]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[5]  ; CLK        ; CLK      ; None                        ; None                      ; 52.900 ns               ;
+; N/A                                     ; 17.57 MHz ( period = 56.900 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[9]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[9]  ; CLK        ; CLK      ; None                        ; None                      ; 52.900 ns               ;
+; N/A                                     ; 17.57 MHz ( period = 56.900 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[10] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[10] ; CLK        ; CLK      ; None                        ; None                      ; 52.900 ns               ;
+; N/A                                     ; 17.57 MHz ( period = 56.900 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[9]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[14] ; CLK        ; CLK      ; None                        ; None                      ; 52.900 ns               ;
+; N/A                                     ; 17.61 MHz ( period = 56.800 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[8]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[9]  ; CLK        ; CLK      ; None                        ; None                      ; 52.800 ns               ;
+; N/A                                     ; 17.61 MHz ( period = 56.800 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[5]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[10] ; CLK        ; CLK      ; None                        ; None                      ; 52.800 ns               ;
+; N/A                                     ; 17.61 MHz ( period = 56.800 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[12] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[13] ; CLK        ; CLK      ; None                        ; None                      ; 52.800 ns               ;
+; N/A                                     ; 17.61 MHz ( period = 56.800 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[8]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[14] ; CLK        ; CLK      ; None                        ; None                      ; 52.800 ns               ;
+; N/A                                     ; 17.64 MHz ( period = 56.700 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[2]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[7]  ; CLK        ; CLK      ; None                        ; None                      ; 52.700 ns               ;
+; N/A                                     ; 17.64 MHz ( period = 56.700 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[0]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[5]  ; CLK        ; CLK      ; None                        ; None                      ; 52.700 ns               ;
+; N/A                                     ; 17.64 MHz ( period = 56.700 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[10] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[9]  ; CLK        ; CLK      ; None                        ; None                      ; 52.700 ns               ;
+; N/A                                     ; 17.64 MHz ( period = 56.700 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[12] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[1]  ; CLK        ; CLK      ; None                        ; None                      ; 52.700 ns               ;
+; N/A                                     ; 17.64 MHz ( period = 56.700 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[13] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[13] ; CLK        ; CLK      ; None                        ; None                      ; 52.700 ns               ;
+; N/A                                     ; 17.64 MHz ( period = 56.700 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[10] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[14] ; CLK        ; CLK      ; None                        ; None                      ; 52.700 ns               ;
+; N/A                                     ; 17.67 MHz ( period = 56.600 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[6]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[6]  ; CLK        ; CLK      ; None                        ; None                      ; 52.600 ns               ;
+; N/A                                     ; 17.67 MHz ( period = 56.600 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[7]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[6]  ; CLK        ; CLK      ; None                        ; None                      ; 52.600 ns               ;
+; N/A                                     ; 17.67 MHz ( period = 56.600 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[5]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[9]  ; CLK        ; CLK      ; None                        ; None                      ; 52.600 ns               ;
+; N/A                                     ; 17.67 MHz ( period = 56.600 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[10] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[0]  ; CLK        ; CLK      ; None                        ; None                      ; 52.600 ns               ;
+; N/A                                     ; 17.67 MHz ( period = 56.600 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[13] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[1]  ; CLK        ; CLK      ; None                        ; None                      ; 52.600 ns               ;
+; N/A                                     ; 17.70 MHz ( period = 56.500 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[4]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[4]  ; CLK        ; CLK      ; None                        ; None                      ; 52.500 ns               ;
+; N/A                                     ; 17.70 MHz ( period = 56.500 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[12] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[12] ; CLK        ; CLK      ; None                        ; None                      ; 52.500 ns               ;
+; N/A                                     ; 17.70 MHz ( period = 56.500 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[1]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[14] ; CLK        ; CLK      ; None                        ; None                      ; 52.500 ns               ;
+; N/A                                     ; 17.73 MHz ( period = 56.400 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[2]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[6]  ; CLK        ; CLK      ; None                        ; None                      ; 52.400 ns               ;
+; N/A                                     ; 17.73 MHz ( period = 56.400 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[3]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[4]  ; CLK        ; CLK      ; None                        ; None                      ; 52.400 ns               ;
+; N/A                                     ; 17.73 MHz ( period = 56.400 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[2]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[0]  ; CLK        ; CLK      ; None                        ; None                      ; 52.400 ns               ;
+; N/A                                     ; 17.73 MHz ( period = 56.400 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[13] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[12] ; CLK        ; CLK      ; None                        ; None                      ; 52.400 ns               ;
+; N/A                                     ; 17.76 MHz ( period = 56.300 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[5]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[8]  ; CLK        ; CLK      ; None                        ; None                      ; 52.300 ns               ;
+; N/A                                     ; 17.76 MHz ( period = 56.300 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[6]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[5]  ; CLK        ; CLK      ; None                        ; None                      ; 52.300 ns               ;
+; N/A                                     ; 17.76 MHz ( period = 56.300 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[7]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[5]  ; CLK        ; CLK      ; None                        ; None                      ; 52.300 ns               ;
+; N/A                                     ; 17.76 MHz ( period = 56.300 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[1]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[10] ; CLK        ; CLK      ; None                        ; None                      ; 52.300 ns               ;
+; N/A                                     ; 17.76 MHz ( period = 56.300 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[0]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[14] ; CLK        ; CLK      ; None                        ; None                      ; 52.300 ns               ;
+; N/A                                     ; 17.79 MHz ( period = 56.200 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[9]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[8]  ; CLK        ; CLK      ; None                        ; None                      ; 52.200 ns               ;
+; N/A                                     ; 17.79 MHz ( period = 56.200 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[6]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[0]  ; CLK        ; CLK      ; None                        ; None                      ; 52.200 ns               ;
+; N/A                                     ; 17.79 MHz ( period = 56.200 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[7]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[0]  ; CLK        ; CLK      ; None                        ; None                      ; 52.200 ns               ;
+; N/A                                     ; 17.79 MHz ( period = 56.200 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[0]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[10] ; CLK        ; CLK      ; None                        ; None                      ; 52.200 ns               ;
+; N/A                                     ; 17.79 MHz ( period = 56.200 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[12] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[11] ; CLK        ; CLK      ; None                        ; None                      ; 52.200 ns               ;
+; N/A                                     ; 17.83 MHz ( period = 56.100 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[8]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[8]  ; CLK        ; CLK      ; None                        ; None                      ; 52.100 ns               ;
+; N/A                                     ; 17.83 MHz ( period = 56.100 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[2]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[5]  ; CLK        ; CLK      ; None                        ; None                      ; 52.100 ns               ;
+; N/A                                     ; 17.83 MHz ( period = 56.100 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[4]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[3]  ; CLK        ; CLK      ; None                        ; None                      ; 52.100 ns               ;
+; N/A                                     ; 17.83 MHz ( period = 56.100 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[1]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[9]  ; CLK        ; CLK      ; None                        ; None                      ; 52.100 ns               ;
+; N/A                                     ; 17.83 MHz ( period = 56.100 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[6]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[10] ; CLK        ; CLK      ; None                        ; None                      ; 52.100 ns               ;
+; N/A                                     ; 17.83 MHz ( period = 56.100 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[7]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[10] ; CLK        ; CLK      ; None                        ; None                      ; 52.100 ns               ;
+; N/A                                     ; 17.83 MHz ( period = 56.100 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[13] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[11] ; CLK        ; CLK      ; None                        ; None                      ; 52.100 ns               ;
+; N/A                                     ; 17.86 MHz ( period = 56.000 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[10] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[8]  ; CLK        ; CLK      ; None                        ; None                      ; 52.000 ns               ;
+; N/A                                     ; 17.86 MHz ( period = 56.000 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[3]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[3]  ; CLK        ; CLK      ; None                        ; None                      ; 52.000 ns               ;
+; N/A                                     ; 17.86 MHz ( period = 56.000 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[0]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[9]  ; CLK        ; CLK      ; None                        ; None                      ; 52.000 ns               ;
+; N/A                                     ; 17.89 MHz ( period = 55.900 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[6]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[9]  ; CLK        ; CLK      ; None                        ; None                      ; 51.900 ns               ;
+; N/A                                     ; 17.89 MHz ( period = 55.900 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[7]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[9]  ; CLK        ; CLK      ; None                        ; None                      ; 51.900 ns               ;
+; N/A                                     ; 17.89 MHz ( period = 55.900 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[6]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[14] ; CLK        ; CLK      ; None                        ; None                      ; 51.900 ns               ;
+; N/A                                     ; 17.89 MHz ( period = 55.900 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[7]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[14] ; CLK        ; CLK      ; None                        ; None                      ; 51.900 ns               ;
+; N/A                                     ; 17.92 MHz ( period = 55.800 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[1]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[8]  ; CLK        ; CLK      ; None                        ; None                      ; 51.800 ns               ;
+; N/A                                     ; 17.92 MHz ( period = 55.800 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[11] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[2]  ; CLK        ; CLK      ; None                        ; None                      ; 51.800 ns               ;
+; N/A                                     ; 17.95 MHz ( period = 55.700 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[2]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[10] ; CLK        ; CLK      ; None                        ; None                      ; 51.700 ns               ;
+; N/A                                     ; 17.95 MHz ( period = 55.700 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[2]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[14] ; CLK        ; CLK      ; None                        ; None                      ; 51.700 ns               ;
+; N/A                                     ; 17.99 MHz ( period = 55.600 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[0]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[8]  ; CLK        ; CLK      ; None                        ; None                      ; 51.600 ns               ;
+; N/A                                     ; 18.02 MHz ( period = 55.500 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[2]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[9]  ; CLK        ; CLK      ; None                        ; None                      ; 51.500 ns               ;
+; N/A                                     ; 18.05 MHz ( period = 55.400 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[11] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[7]  ; CLK        ; CLK      ; None                        ; None                      ; 51.400 ns               ;
+; N/A                                     ; 18.08 MHz ( period = 55.300 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[5]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[4]  ; CLK        ; CLK      ; None                        ; None                      ; 51.300 ns               ;
+; N/A                                     ; 18.12 MHz ( period = 55.200 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[6]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[8]  ; CLK        ; CLK      ; None                        ; None                      ; 51.200 ns               ;
+; N/A                                     ; 18.12 MHz ( period = 55.200 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[7]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[8]  ; CLK        ; CLK      ; None                        ; None                      ; 51.200 ns               ;
+; N/A                                     ; 18.12 MHz ( period = 55.200 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[9]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[4]  ; CLK        ; CLK      ; None                        ; None                      ; 51.200 ns               ;
+; N/A                                     ; 18.15 MHz ( period = 55.100 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[11] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[6]  ; CLK        ; CLK      ; None                        ; None                      ; 51.100 ns               ;
+; N/A                                     ; 18.15 MHz ( period = 55.100 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[8]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[4]  ; CLK        ; CLK      ; None                        ; None                      ; 51.100 ns               ;
+; N/A                                     ; 18.18 MHz ( period = 55.000 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[2]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[8]  ; CLK        ; CLK      ; None                        ; None                      ; 51.000 ns               ;
+; N/A                                     ; 18.18 MHz ( period = 55.000 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[10] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[4]  ; CLK        ; CLK      ; None                        ; None                      ; 51.000 ns               ;
+; N/A                                     ; 18.21 MHz ( period = 54.900 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[5]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[3]  ; CLK        ; CLK      ; None                        ; None                      ; 50.900 ns               ;
+; N/A                                     ; 18.25 MHz ( period = 54.800 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[11] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[5]  ; CLK        ; CLK      ; None                        ; None                      ; 50.800 ns               ;
+; N/A                                     ; 18.25 MHz ( period = 54.800 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[1]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[4]  ; CLK        ; CLK      ; None                        ; None                      ; 50.800 ns               ;
+; N/A                                     ; 18.25 MHz ( period = 54.800 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[9]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[3]  ; CLK        ; CLK      ; None                        ; None                      ; 50.800 ns               ;
+; N/A                                     ; 18.28 MHz ( period = 54.700 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[8]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[3]  ; CLK        ; CLK      ; None                        ; None                      ; 50.700 ns               ;
+; N/A                                     ; 18.32 MHz ( period = 54.600 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[0]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[4]  ; CLK        ; CLK      ; None                        ; None                      ; 50.600 ns               ;
+; N/A                                     ; 18.32 MHz ( period = 54.600 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[10] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[3]  ; CLK        ; CLK      ; None                        ; None                      ; 50.600 ns               ;
+; N/A                                     ; 18.32 MHz ( period = 54.600 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[11] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[10] ; CLK        ; CLK      ; None                        ; None                      ; 50.600 ns               ;
+; N/A                                     ; 18.38 MHz ( period = 54.400 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[1]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[3]  ; CLK        ; CLK      ; None                        ; None                      ; 50.400 ns               ;
+; N/A                                     ; 18.38 MHz ( period = 54.400 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[11] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[9]  ; CLK        ; CLK      ; None                        ; None                      ; 50.400 ns               ;
+; N/A                                     ; 18.38 MHz ( period = 54.400 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[11] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[14] ; CLK        ; CLK      ; None                        ; None                      ; 50.400 ns               ;
+; N/A                                     ; 18.42 MHz ( period = 54.300 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[12] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[2]  ; CLK        ; CLK      ; None                        ; None                      ; 50.300 ns               ;
+; N/A                                     ; 18.42 MHz ( period = 54.300 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[11] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[0]  ; CLK        ; CLK      ; None                        ; None                      ; 50.300 ns               ;
+; N/A                                     ; 18.45 MHz ( period = 54.200 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[6]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[4]  ; CLK        ; CLK      ; None                        ; None                      ; 50.200 ns               ;
+; N/A                                     ; 18.45 MHz ( period = 54.200 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[7]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[4]  ; CLK        ; CLK      ; None                        ; None                      ; 50.200 ns               ;
+; N/A                                     ; 18.45 MHz ( period = 54.200 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[0]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[3]  ; CLK        ; CLK      ; None                        ; None                      ; 50.200 ns               ;
+; N/A                                     ; 18.45 MHz ( period = 54.200 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[13] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[2]  ; CLK        ; CLK      ; None                        ; None                      ; 50.200 ns               ;
+; N/A                                     ; 18.52 MHz ( period = 54.000 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[2]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[4]  ; CLK        ; CLK      ; None                        ; None                      ; 50.000 ns               ;
+; N/A                                     ; 18.55 MHz ( period = 53.900 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[12] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[7]  ; CLK        ; CLK      ; None                        ; None                      ; 49.900 ns               ;
+; N/A                                     ; 18.59 MHz ( period = 53.800 ns )                    ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[7]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[3]  ; CLK        ; CLK      ; None                        ; None                      ; 49.800 ns               ;
+; Timing analysis restricted to 200 rows. ; To change the limit use Settings (Assignments menu) ;                                              ;                                              ;            ;          ;                             ;                           ;                         ;
++-----------------------------------------+-----------------------------------------------------+----------------------------------------------+----------------------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+
+
++-------------------------------------------------------------------------------------------------------+
+; tsu                                                                                                   ;
++-------+--------------+------------+---------+----------------------------------------------+----------+
+; Slack ; Required tsu ; Actual tsu ; From    ; To                                           ; To Clock ;
++-------+--------------+------------+---------+----------------------------------------------+----------+
+; N/A   ; None         ; 24.000 ns  ; NUM[1]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[1]  ; CLK      ;
+; N/A   ; None         ; 22.800 ns  ; NUM[0]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[0]  ; CLK      ;
+; N/A   ; None         ; 17.300 ns  ; NUM[2]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[2]  ; CLK      ;
+; N/A   ; None         ; 15.800 ns  ; NUM[8]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[8]  ; CLK      ;
+; N/A   ; None         ; 15.700 ns  ; NUM[6]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[6]  ; CLK      ;
+; N/A   ; None         ; 15.600 ns  ; NUM[7]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[7]  ; CLK      ;
+; N/A   ; None         ; 15.500 ns  ; NUM[12] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[12] ; CLK      ;
+; N/A   ; None         ; 15.500 ns  ; NUM[13] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[13] ; CLK      ;
+; N/A   ; None         ; 15.400 ns  ; NUM[3]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[3]  ; CLK      ;
+; N/A   ; None         ; 15.000 ns  ; NUM[15] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[15] ; CLK      ;
+; N/A   ; None         ; 14.900 ns  ; NUM[4]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[4]  ; CLK      ;
+; N/A   ; None         ; 14.700 ns  ; NUM[11] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[11] ; CLK      ;
+; N/A   ; None         ; 14.500 ns  ; NUM[5]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[5]  ; CLK      ;
+; N/A   ; None         ; 14.400 ns  ; NUM[9]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[9]  ; CLK      ;
+; N/A   ; None         ; 14.400 ns  ; NUM[10] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[10] ; CLK      ;
+; N/A   ; None         ; 10.800 ns  ; NUM[14] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[14] ; CLK      ;
+; N/A   ; None         ; 10.100 ns  ; START   ; fsm_log:inst|s0                              ; CLK      ;
+; N/A   ; None         ; 10.100 ns  ; START   ; fsm_log:inst|en_regX                         ; CLK      ;
+; N/A   ; None         ; 7.800 ns   ; START   ; fsm_log:inst|s1                              ; CLK      ;
+; N/A   ; None         ; 7.800 ns   ; START   ; fsm_log:inst|load_C                          ; CLK      ;
+; N/A   ; None         ; 7.200 ns   ; START   ; fsm_log:inst|estados[0]                      ; CLK      ;
++-------+--------------+------------+---------+----------------------------------------------+----------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------+
+; tco                                                                                                                              ;
++-------+--------------+------------+-------------------------------------------------------------------------+-------+------------+
+; Slack ; Required tco ; Actual tco ; From                                                                    ; To    ; From Clock ;
++-------+--------------+------------+-------------------------------------------------------------------------+-------+------------+
+; N/A   ; None         ; 31.500 ns  ; fsm_log:inst|lpm_counter:contador_C|alt_counter_f10ke:wysi_counter|q[4] ; Y[10] ; CLK        ;
+; N/A   ; None         ; 30.100 ns  ; fsm_log:inst|lpm_counter:contador_C|alt_counter_f10ke:wysi_counter|q[4] ; Y[8]  ; CLK        ;
+; N/A   ; None         ; 29.900 ns  ; fsm_log:inst|lpm_counter:contador_C|alt_counter_f10ke:wysi_counter|q[4] ; -INF  ; CLK        ;
+; N/A   ; None         ; 28.500 ns  ; fsm_log:inst|lpm_counter:contador_C|alt_counter_f10ke:wysi_counter|q[4] ; Y[11] ; CLK        ;
+; N/A   ; None         ; 28.000 ns  ; fsm_log:inst|lpm_counter:contador_C|alt_counter_f10ke:wysi_counter|q[4] ; Y[7]  ; CLK        ;
+; N/A   ; None         ; 27.900 ns  ; fsm_log:inst|lpm_counter:contador_C|alt_counter_f10ke:wysi_counter|q[4] ; Y[9]  ; CLK        ;
+; N/A   ; None         ; 27.800 ns  ; fsm_log:inst|lpm_counter:contador_C|alt_counter_f10ke:wysi_counter|q[4] ; Y[5]  ; CLK        ;
+; N/A   ; None         ; 27.700 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[3]                             ; Y[10] ; CLK        ;
+; N/A   ; None         ; 27.400 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[4]                             ; Y[10] ; CLK        ;
+; N/A   ; None         ; 26.300 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[3]                             ; Y[8]  ; CLK        ;
+; N/A   ; None         ; 26.100 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[5]                             ; Y[10] ; CLK        ;
+; N/A   ; None         ; 26.000 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[4]                             ; Y[8]  ; CLK        ;
+; N/A   ; None         ; 26.000 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[1]                             ; Y[10] ; CLK        ;
+; N/A   ; None         ; 25.900 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[0]                             ; Y[10] ; CLK        ;
+; N/A   ; None         ; 25.800 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[6]                             ; Y[10] ; CLK        ;
+; N/A   ; None         ; 25.700 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[2]                             ; Y[10] ; CLK        ;
+; N/A   ; None         ; 25.600 ns  ; fsm_log:inst|lpm_counter:contador_C|alt_counter_f10ke:wysi_counter|q[4] ; Y[3]  ; CLK        ;
+; N/A   ; None         ; 25.400 ns  ; fsm_log:inst|lpm_counter:contador_C|alt_counter_f10ke:wysi_counter|q[4] ; Y[1]  ; CLK        ;
+; N/A   ; None         ; 25.400 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[7]                             ; Y[10] ; CLK        ;
+; N/A   ; None         ; 25.400 ns  ; fsm_log:inst|lpm_counter:contador_C|alt_counter_f10ke:wysi_counter|q[1] ; -INF  ; CLK        ;
+; N/A   ; None         ; 25.300 ns  ; fsm_log:inst|lpm_counter:contador_C|alt_counter_f10ke:wysi_counter|q[4] ; Y[6]  ; CLK        ;
+; N/A   ; None         ; 25.100 ns  ; fsm_log:inst|lpm_counter:contador_C|alt_counter_f10ke:wysi_counter|q[4] ; Y[2]  ; CLK        ;
+; N/A   ; None         ; 25.100 ns  ; fsm_log:inst|lpm_counter:contador_C|alt_counter_f10ke:wysi_counter|q[0] ; Y[10] ; CLK        ;
+; N/A   ; None         ; 25.100 ns  ; fsm_log:inst|lpm_counter:contador_C|alt_counter_f10ke:wysi_counter|q[2] ; -INF  ; CLK        ;
+; N/A   ; None         ; 25.000 ns  ; fsm_log:inst|lpm_counter:contador_C|alt_counter_f10ke:wysi_counter|q[4] ; Y[12] ; CLK        ;
+; N/A   ; None         ; 24.900 ns  ; fsm_log:inst|lpm_counter:contador_C|alt_counter_f10ke:wysi_counter|q[2] ; Y[10] ; CLK        ;
+; N/A   ; None         ; 24.700 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[5]                             ; Y[8]  ; CLK        ;
+; N/A   ; None         ; 24.700 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[3]                             ; Y[11] ; CLK        ;
+; N/A   ; None         ; 24.600 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[1]                             ; Y[8]  ; CLK        ;
+; N/A   ; None         ; 24.600 ns  ; fsm_log:inst|lpm_counter:contador_C|alt_counter_f10ke:wysi_counter|q[1] ; Y[10] ; CLK        ;
+; N/A   ; None         ; 24.500 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[0]                             ; Y[8]  ; CLK        ;
+; N/A   ; None         ; 24.400 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[6]                             ; Y[8]  ; CLK        ;
+; N/A   ; None         ; 24.400 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[4]                             ; Y[11] ; CLK        ;
+; N/A   ; None         ; 24.300 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[2]                             ; Y[8]  ; CLK        ;
+; N/A   ; None         ; 24.200 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[3]                             ; Y[7]  ; CLK        ;
+; N/A   ; None         ; 24.100 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[0]                             ; Y[0]  ; CLK        ;
+; N/A   ; None         ; 24.100 ns  ; fsm_log:inst|lpm_counter:contador_C|alt_counter_f10ke:wysi_counter|q[0] ; Y[8]  ; CLK        ;
+; N/A   ; None         ; 24.100 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[3]                             ; Y[9]  ; CLK        ;
+; N/A   ; None         ; 24.000 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[7]                             ; Y[8]  ; CLK        ;
+; N/A   ; None         ; 23.900 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[4]                             ; Y[7]  ; CLK        ;
+; N/A   ; None         ; 23.800 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[4]                             ; Y[9]  ; CLK        ;
+; N/A   ; None         ; 23.600 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[3]                             ; Y[5]  ; CLK        ;
+; N/A   ; None         ; 23.400 ns  ; fsm_log:inst|lpm_counter:contador_C|alt_counter_f10ke:wysi_counter|q[4] ; Y[4]  ; CLK        ;
+; N/A   ; None         ; 23.300 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[4]                             ; Y[5]  ; CLK        ;
+; N/A   ; None         ; 23.100 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[5]                             ; Y[11] ; CLK        ;
+; N/A   ; None         ; 23.000 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[1]                             ; Y[11] ; CLK        ;
+; N/A   ; None         ; 22.900 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[0]                             ; Y[11] ; CLK        ;
+; N/A   ; None         ; 22.800 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[6]                             ; Y[11] ; CLK        ;
+; N/A   ; None         ; 22.700 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[2]                             ; Y[11] ; CLK        ;
+; N/A   ; None         ; 22.600 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[5]                             ; Y[7]  ; CLK        ;
+; N/A   ; None         ; 22.500 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[1]                             ; Y[7]  ; CLK        ;
+; N/A   ; None         ; 22.500 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[5]                             ; Y[9]  ; CLK        ;
+; N/A   ; None         ; 22.400 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[5]                             ; Y[5]  ; CLK        ;
+; N/A   ; None         ; 22.400 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[0]                             ; Y[7]  ; CLK        ;
+; N/A   ; None         ; 22.400 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[1]                             ; Y[9]  ; CLK        ;
+; N/A   ; None         ; 22.400 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[7]                             ; Y[11] ; CLK        ;
+; N/A   ; None         ; 22.300 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[3]                             ; Y[3]  ; CLK        ;
+; N/A   ; None         ; 22.300 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[7]                             ; Y[7]  ; CLK        ;
+; N/A   ; None         ; 22.300 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[6]                             ; Y[7]  ; CLK        ;
+; N/A   ; None         ; 22.300 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[0]                             ; Y[9]  ; CLK        ;
+; N/A   ; None         ; 22.200 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[2]                             ; Y[7]  ; CLK        ;
+; N/A   ; None         ; 22.200 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[6]                             ; Y[9]  ; CLK        ;
+; N/A   ; None         ; 22.200 ns  ; fsm_log:inst|lpm_counter:contador_C|alt_counter_f10ke:wysi_counter|q[3] ; -INF  ; CLK        ;
+; N/A   ; None         ; 22.100 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[2]                             ; Y[9]  ; CLK        ;
+; N/A   ; None         ; 22.100 ns  ; fsm_log:inst|lpm_counter:contador_C|alt_counter_f10ke:wysi_counter|q[0] ; Y[11] ; CLK        ;
+; N/A   ; None         ; 21.900 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[1]                             ; Y[5]  ; CLK        ;
+; N/A   ; None         ; 21.900 ns  ; fsm_log:inst|lpm_counter:contador_C|alt_counter_f10ke:wysi_counter|q[0] ; -INF  ; CLK        ;
+; N/A   ; None         ; 21.800 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[0]                             ; Y[5]  ; CLK        ;
+; N/A   ; None         ; 21.800 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[7]                             ; Y[9]  ; CLK        ;
+; N/A   ; None         ; 21.800 ns  ; fsm_log:inst|lpm_counter:contador_C|alt_counter_f10ke:wysi_counter|q[4] ; C[4]  ; CLK        ;
+; N/A   ; None         ; 21.600 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[2]                             ; Y[5]  ; CLK        ;
+; N/A   ; None         ; 21.600 ns  ; fsm_log:inst|lpm_counter:contador_C|alt_counter_f10ke:wysi_counter|q[1] ; Y[11] ; CLK        ;
+; N/A   ; None         ; 21.500 ns  ; fsm_log:inst|lpm_counter:contador_C|alt_counter_f10ke:wysi_counter|q[0] ; Y[9]  ; CLK        ;
+; N/A   ; None         ; 21.500 ns  ; fsm_log:inst|lpm_counter:contador_C|alt_counter_f10ke:wysi_counter|q[2] ; Y[11] ; CLK        ;
+; N/A   ; None         ; 21.400 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[3]                             ; Y[6]  ; CLK        ;
+; N/A   ; None         ; 21.400 ns  ; fsm_log:inst|lpm_counter:contador_C|alt_counter_f10ke:wysi_counter|q[1] ; Y[9]  ; CLK        ;
+; N/A   ; None         ; 21.300 ns  ; fsm_log:inst|lpm_counter:contador_C|alt_counter_f10ke:wysi_counter|q[3] ; Y[11] ; CLK        ;
+; N/A   ; None         ; 21.100 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[4]                             ; Y[6]  ; CLK        ;
+; N/A   ; None         ; 20.800 ns  ; fsm_log:inst|estados[0]                                                 ; SS[0] ; CLK        ;
+; N/A   ; None         ; 20.200 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[1]                             ; Y[3]  ; CLK        ;
+; N/A   ; None         ; 20.100 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[0]                             ; Y[3]  ; CLK        ;
+; N/A   ; None         ; 20.000 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[1]                             ; Y[1]  ; CLK        ;
+; N/A   ; None         ; 19.900 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[2]                             ; Y[3]  ; CLK        ;
+; N/A   ; None         ; 19.900 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[6]                             ; Y[6]  ; CLK        ;
+; N/A   ; None         ; 19.800 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[4]                             ; Y[4]  ; CLK        ;
+; N/A   ; None         ; 19.800 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[5]                             ; Y[6]  ; CLK        ;
+; N/A   ; None         ; 19.700 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[2]                             ; Y[2]  ; CLK        ;
+; N/A   ; None         ; 19.700 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[3]                             ; Y[4]  ; CLK        ;
+; N/A   ; None         ; 19.700 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[1]                             ; Y[6]  ; CLK        ;
+; N/A   ; None         ; 19.600 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[1]                             ; Y[2]  ; CLK        ;
+; N/A   ; None         ; 19.600 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[0]                             ; Y[6]  ; CLK        ;
+; N/A   ; None         ; 19.500 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[0]                             ; Y[1]  ; CLK        ;
+; N/A   ; None         ; 19.500 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[0]                             ; Y[2]  ; CLK        ;
+; N/A   ; None         ; 19.400 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[2]                             ; Y[6]  ; CLK        ;
+; N/A   ; None         ; 19.300 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[0]                             ; M[0]  ; CLK        ;
+; N/A   ; None         ; 18.700 ns  ; fsm_log:inst|estados[1]                                                 ; SS[1] ; CLK        ;
+; N/A   ; None         ; 18.000 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[1]                             ; Y[4]  ; CLK        ;
+; N/A   ; None         ; 17.900 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[0]                             ; Y[4]  ; CLK        ;
+; N/A   ; None         ; 17.700 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[2]                             ; Y[4]  ; CLK        ;
+; N/A   ; None         ; 16.900 ns  ; fsm_log:inst|s0                                                         ; READY ; CLK        ;
+; N/A   ; None         ; 16.800 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[1]                             ; M[1]  ; CLK        ;
+; N/A   ; None         ; 16.800 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[6]                             ; M[6]  ; CLK        ;
+; N/A   ; None         ; 16.800 ns  ; fsm_log:inst|lpm_counter:contador_C|alt_counter_f10ke:wysi_counter|q[3] ; C[3]  ; CLK        ;
+; N/A   ; None         ; 16.500 ns  ; fsm_log:inst|lpm_counter:contador_C|alt_counter_f10ke:wysi_counter|q[1] ; C[1]  ; CLK        ;
+; N/A   ; None         ; 16.400 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[5]                             ; M[5]  ; CLK        ;
+; N/A   ; None         ; 16.300 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[7]                             ; M[7]  ; CLK        ;
+; N/A   ; None         ; 16.300 ns  ; fsm_log:inst|lpm_counter:contador_C|alt_counter_f10ke:wysi_counter|q[0] ; C[0]  ; CLK        ;
+; N/A   ; None         ; 14.300 ns  ; fsm_log:inst|s4                                                         ; SS[2] ; CLK        ;
+; N/A   ; None         ; 14.300 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[2]                             ; M[2]  ; CLK        ;
+; N/A   ; None         ; 14.300 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[3]                             ; M[3]  ; CLK        ;
+; N/A   ; None         ; 14.300 ns  ; fsm_log:inst|lpm_shiftreg:shifter_M|dffs[4]                             ; M[4]  ; CLK        ;
+; N/A   ; None         ; 14.300 ns  ; fsm_log:inst|lpm_counter:contador_C|alt_counter_f10ke:wysi_counter|q[2] ; C[2]  ; CLK        ;
++-------+--------------+------------+-------------------------------------------------------------------------+-------+------------+
+
+
++--------------------------------------------------------------------------------------------------------------+
+; th                                                                                                           ;
++---------------+-------------+------------+---------+----------------------------------------------+----------+
+; Minimum Slack ; Required th ; Actual th  ; From    ; To                                           ; To Clock ;
++---------------+-------------+------------+---------+----------------------------------------------+----------+
+; N/A           ; None        ; -1.500 ns  ; START   ; fsm_log:inst|estados[0]                      ; CLK      ;
+; N/A           ; None        ; -2.100 ns  ; START   ; fsm_log:inst|s1                              ; CLK      ;
+; N/A           ; None        ; -2.100 ns  ; START   ; fsm_log:inst|load_C                          ; CLK      ;
+; N/A           ; None        ; -4.400 ns  ; START   ; fsm_log:inst|s0                              ; CLK      ;
+; N/A           ; None        ; -4.400 ns  ; START   ; fsm_log:inst|en_regX                         ; CLK      ;
+; N/A           ; None        ; -5.100 ns  ; NUM[14] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[14] ; CLK      ;
+; N/A           ; None        ; -8.700 ns  ; NUM[9]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[9]  ; CLK      ;
+; N/A           ; None        ; -8.700 ns  ; NUM[10] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[10] ; CLK      ;
+; N/A           ; None        ; -8.800 ns  ; NUM[5]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[5]  ; CLK      ;
+; N/A           ; None        ; -9.000 ns  ; NUM[11] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[11] ; CLK      ;
+; N/A           ; None        ; -9.200 ns  ; NUM[4]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[4]  ; CLK      ;
+; N/A           ; None        ; -9.300 ns  ; NUM[15] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[15] ; CLK      ;
+; N/A           ; None        ; -9.700 ns  ; NUM[3]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[3]  ; CLK      ;
+; N/A           ; None        ; -9.800 ns  ; NUM[12] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[12] ; CLK      ;
+; N/A           ; None        ; -9.800 ns  ; NUM[13] ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[13] ; CLK      ;
+; N/A           ; None        ; -9.900 ns  ; NUM[7]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[7]  ; CLK      ;
+; N/A           ; None        ; -10.000 ns ; NUM[6]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[6]  ; CLK      ;
+; N/A           ; None        ; -10.100 ns ; NUM[8]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[8]  ; CLK      ;
+; N/A           ; None        ; -11.600 ns ; NUM[2]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[2]  ; CLK      ;
+; N/A           ; None        ; -16.800 ns ; NUM[0]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[0]  ; CLK      ;
+; N/A           ; None        ; -18.000 ns ; NUM[1]  ; fsm_log:inst|lpm_shiftreg:shifter_X|dffs[1]  ; CLK      ;
++---------------+-------------+------------+---------+----------------------------------------------+----------+
+
+
++--------------------------+
+; Timing Analyzer Messages ;
++--------------------------+
+Info: *******************************************************************
+Info: Running Quartus II Timing Analyzer
+    Info: Version 5.0 Build 148 04/26/2005 SJ Full Version
+    Info: Processing started: Mon May 26 22:57:59 2008
+Info: Command: quartus_tan --read_settings_files=off --write_settings_files=off LogBin -c LogBin
+Info: Started post-fitting delay annotation
+Info: Delay annotation completed successfully
+Warning: Found pins functioning as undefined clocks and/or memory enables
+    Info: Assuming node "CLK" is an undefined clock
+Info: Clock "CLK" has Internal fmax of 15.95 MHz between source register "fsm_log:inst|lpm_shiftreg:shifter_X|dffs[4]" and destination register "fsm_log:inst|lpm_shiftreg:shifter_X|dffs[15]" (period= 62.7 ns)
+    Info: + Longest register to register delay is 58.700 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LC2_D25; Fanout = 24; REG Node = 'fsm_log:inst|lpm_shiftreg:shifter_X|dffs[4]'
+        Info: 2: + IC(5.000 ns) + CELL(2.700 ns) = 7.700 ns; Loc. = LC3_F24; Fanout = 18; COMB Node = 'fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mul_boothc:booth_enc|sel1_reg[2]'
+        Info: 3: + IC(3.100 ns) + CELL(2.700 ns) = 13.500 ns; Loc. = LC1_F23; Fanout = 2; COMB Node = 'fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|partial_product_node[2][0]~3732'
+        Info: 4: + IC(2.900 ns) + CELL(1.400 ns) = 17.800 ns; Loc. = LC3_F13; Fanout = 2; COMB Node = 'fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[1]|addcore:adder|a_csnbuffer:result_node|cout[0]'
+        Info: 5: + IC(0.000 ns) + CELL(0.300 ns) = 18.100 ns; Loc. = LC4_F13; Fanout = 2; COMB Node = 'fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[1]|addcore:adder|a_csnbuffer:result_node|cout[1]'
+        Info: 6: + IC(0.000 ns) + CELL(0.300 ns) = 18.400 ns; Loc. = LC5_F13; Fanout = 2; COMB Node = 'fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[1]|addcore:adder|a_csnbuffer:result_node|cout[2]'
+        Info: 7: + IC(0.000 ns) + CELL(0.300 ns) = 18.700 ns; Loc. = LC6_F13; Fanout = 2; COMB Node = 'fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[1]|addcore:adder|a_csnbuffer:result_node|cout[3]'
+        Info: 8: + IC(0.000 ns) + CELL(0.300 ns) = 19.000 ns; Loc. = LC7_F13; Fanout = 2; COMB Node = 'fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[1]|addcore:adder|a_csnbuffer:result_node|cout[4]'
+        Info: 9: + IC(0.000 ns) + CELL(0.300 ns) = 19.300 ns; Loc. = LC8_F13; Fanout = 2; COMB Node = 'fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[1]|addcore:adder|a_csnbuffer:result_node|cout[5]'
+        Info: 10: + IC(1.100 ns) + CELL(0.300 ns) = 20.700 ns; Loc. = LC1_F15; Fanout = 2; COMB Node = 'fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[1]|addcore:adder|a_csnbuffer:result_node|cout[6]'
+        Info: 11: + IC(0.000 ns) + CELL(0.300 ns) = 21.000 ns; Loc. = LC2_F15; Fanout = 2; COMB Node = 'fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[1]|addcore:adder|a_csnbuffer:result_node|cout[7]'
+        Info: 12: + IC(0.000 ns) + CELL(0.300 ns) = 21.300 ns; Loc. = LC3_F15; Fanout = 2; COMB Node = 'fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[1]|addcore:adder|a_csnbuffer:result_node|cout[8]'
+        Info: 13: + IC(0.000 ns) + CELL(0.300 ns) = 21.600 ns; Loc. = LC4_F15; Fanout = 2; COMB Node = 'fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[1]|addcore:adder|a_csnbuffer:result_node|cout[9]'
+        Info: 14: + IC(0.000 ns) + CELL(0.300 ns) = 21.900 ns; Loc. = LC5_F15; Fanout = 2; COMB Node = 'fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[1]|addcore:adder|a_csnbuffer:result_node|cout[10]'
+        Info: 15: + IC(0.000 ns) + CELL(0.300 ns) = 22.200 ns; Loc. = LC6_F15; Fanout = 2; COMB Node = 'fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[1]|addcore:adder|a_csnbuffer:result_node|cout[11]'
+        Info: 16: + IC(0.000 ns) + CELL(0.300 ns) = 22.500 ns; Loc. = LC7_F15; Fanout = 2; COMB Node = 'fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[1]|addcore:adder|a_csnbuffer:result_node|cout[12]'
+        Info: 17: + IC(0.000 ns) + CELL(0.300 ns) = 22.800 ns; Loc. = LC8_F15; Fanout = 2; COMB Node = 'fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[1]|addcore:adder|a_csnbuffer:result_node|cout[13]'
+        Info: 18: + IC(1.100 ns) + CELL(1.200 ns) = 25.100 ns; Loc. = LC1_F17; Fanout = 2; COMB Node = 'fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[1]|addcore:adder|a_csnbuffer:result_node|cs_buffer[14]'
+        Info: 19: + IC(2.800 ns) + CELL(2.700 ns) = 30.600 ns; Loc. = LC2_F18; Fanout = 2; COMB Node = 'fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]|addcore:adder|a_csnbuffer:result_node|cs_buffer[16]'
+        Info: 20: + IC(4.700 ns) + CELL(1.400 ns) = 36.700 ns; Loc. = LC8_D19; Fanout = 2; COMB Node = 'fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|mpar_add:sub_par_add|lpm_add_sub:adder[0]|addcore:adder|a_csnbuffer:result_node|cout[12]'
+        Info: 21: + IC(1.100 ns) + CELL(0.300 ns) = 38.100 ns; Loc. = LC1_D21; Fanout = 2; COMB Node = 'fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|mpar_add:sub_par_add|lpm_add_sub:adder[0]|addcore:adder|a_csnbuffer:result_node|cout[13]'
+        Info: 22: + IC(0.000 ns) + CELL(0.300 ns) = 38.400 ns; Loc. = LC2_D21; Fanout = 2; COMB Node = 'fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|mpar_add:sub_par_add|lpm_add_sub:adder[0]|addcore:adder|a_csnbuffer:result_node|cout[14]'
+        Info: 23: + IC(0.000 ns) + CELL(0.300 ns) = 38.700 ns; Loc. = LC3_D21; Fanout = 2; COMB Node = 'fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|mpar_add:sub_par_add|lpm_add_sub:adder[0]|addcore:adder|a_csnbuffer:result_node|cout[15]'
+        Info: 24: + IC(0.000 ns) + CELL(0.300 ns) = 39.000 ns; Loc. = LC4_D21; Fanout = 2; COMB Node = 'fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|mpar_add:sub_par_add|lpm_add_sub:adder[0]|addcore:adder|a_csnbuffer:result_node|cout[16]'
+        Info: 25: + IC(0.000 ns) + CELL(0.300 ns) = 39.300 ns; Loc. = LC5_D21; Fanout = 2; COMB Node = 'fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|mpar_add:sub_par_add|lpm_add_sub:adder[0]|addcore:adder|a_csnbuffer:result_node|cout[17]'
+        Info: 26: + IC(0.000 ns) + CELL(0.300 ns) = 39.600 ns; Loc. = LC6_D21; Fanout = 2; COMB Node = 'fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|mpar_add:sub_par_add|lpm_add_sub:adder[0]|addcore:adder|a_csnbuffer:result_node|cout[18]'
+        Info: 27: + IC(0.000 ns) + CELL(0.300 ns) = 39.900 ns; Loc. = LC7_D21; Fanout = 2; COMB Node = 'fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|mpar_add:sub_par_add|lpm_add_sub:adder[0]|addcore:adder|a_csnbuffer:result_node|cout[19]'
+        Info: 28: + IC(0.000 ns) + CELL(0.300 ns) = 40.200 ns; Loc. = LC8_D21; Fanout = 2; COMB Node = 'fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|mpar_add:sub_par_add|lpm_add_sub:adder[0]|addcore:adder|a_csnbuffer:result_node|cout[20]'
+        Info: 29: + IC(1.100 ns) + CELL(0.300 ns) = 41.600 ns; Loc. = LC1_D23; Fanout = 2; COMB Node = 'fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|mpar_add:sub_par_add|lpm_add_sub:adder[0]|addcore:adder|a_csnbuffer:result_node|cout[21]'
+        Info: 30: + IC(0.000 ns) + CELL(0.300 ns) = 41.900 ns; Loc. = LC2_D23; Fanout = 2; COMB Node = 'fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|mpar_add:sub_par_add|lpm_add_sub:adder[0]|addcore:adder|a_csnbuffer:result_node|cout[22]'
+        Info: 31: + IC(0.000 ns) + CELL(0.300 ns) = 42.200 ns; Loc. = LC3_D23; Fanout = 2; COMB Node = 'fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|mpar_add:sub_par_add|lpm_add_sub:adder[0]|addcore:adder|a_csnbuffer:result_node|cout[23]'
+        Info: 32: + IC(0.000 ns) + CELL(0.300 ns) = 42.500 ns; Loc. = LC4_D23; Fanout = 1; COMB Node = 'fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|mpar_add:sub_par_add|lpm_add_sub:adder[0]|addcore:adder|a_csnbuffer:result_node|cout[24]'
+        Info: 33: + IC(0.000 ns) + CELL(1.200 ns) = 43.700 ns; Loc. = LC5_D23; Fanout = 1; COMB Node = 'fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|mpar_add:sub_par_add|lpm_add_sub:adder[0]|addcore:adder|unreg_res_node[25]'
+        Info: 34: + IC(2.700 ns) + CELL(2.700 ns) = 49.100 ns; Loc. = LC5_D22; Fanout = 1; COMB Node = 'fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|mpar_add:sub_par_add|mpar_add:sub_par_add|lpm_add_sub:adder[0]|addcore:adder|unreg_res_node[17]'
+        Info: 35: + IC(0.500 ns) + CELL(2.400 ns) = 52.000 ns; Loc. = LC6_D22; Fanout = 1; COMB Node = 'fsm_log:inst|lpm_shiftreg:shifter_X|_~1140'
+        Info: 36: + IC(4.700 ns) + CELL(2.000 ns) = 58.700 ns; Loc. = LC8_F22; Fanout = 31; REG Node = 'fsm_log:inst|lpm_shiftreg:shifter_X|dffs[15]'
+        Info: Total cell delay = 27.900 ns ( 47.53 % )
+        Info: Total interconnect delay = 30.800 ns ( 52.47 % )
+    Info: - Smallest clock skew is 0.000 ns
+        Info: + Shortest clock path from clock "CLK" to destination register is 7.000 ns
+            Info: 1: + IC(0.000 ns) + CELL(2.900 ns) = 2.900 ns; Loc. = PIN_91; Fanout = 50; CLK Node = 'CLK'
+            Info: 2: + IC(4.100 ns) + CELL(0.000 ns) = 7.000 ns; Loc. = LC8_F22; Fanout = 31; REG Node = 'fsm_log:inst|lpm_shiftreg:shifter_X|dffs[15]'
+            Info: Total cell delay = 2.900 ns ( 41.43 % )
+            Info: Total interconnect delay = 4.100 ns ( 58.57 % )
+        Info: - Longest clock path from clock "CLK" to source register is 7.000 ns
+            Info: 1: + IC(0.000 ns) + CELL(2.900 ns) = 2.900 ns; Loc. = PIN_91; Fanout = 50; CLK Node = 'CLK'
+            Info: 2: + IC(4.100 ns) + CELL(0.000 ns) = 7.000 ns; Loc. = LC2_D25; Fanout = 24; REG Node = 'fsm_log:inst|lpm_shiftreg:shifter_X|dffs[4]'
+            Info: Total cell delay = 2.900 ns ( 41.43 % )
+            Info: Total interconnect delay = 4.100 ns ( 58.57 % )
+    Info: + Micro clock to output delay of source is 1.400 ns
+    Info: + Micro setup delay of destination is 2.600 ns
+Info: tsu for register "fsm_log:inst|lpm_shiftreg:shifter_X|dffs[1]" (data pin = "NUM[1]", clock pin = "CLK") is 24.000 ns
+    Info: + Longest pin to register delay is 28.400 ns
+        Info: 1: + IC(0.000 ns) + CELL(10.300 ns) = 10.300 ns; Loc. = PIN_156; Fanout = 1; PIN Node = 'NUM[1]'
+        Info: 2: + IC(3.400 ns) + CELL(2.700 ns) = 16.400 ns; Loc. = LC2_D18; Fanout = 1; COMB Node = 'fsm_log:inst|lpm_mux:mux_X|muxlut:$00011|result_node~7'
+        Info: 3: + IC(2.700 ns) + CELL(2.400 ns) = 21.500 ns; Loc. = LC1_D14; Fanout = 4; COMB Node = 'fsm_log:inst|lpm_shiftreg:shifter_X|_~1147'
+        Info: 4: + IC(4.900 ns) + CELL(2.000 ns) = 28.400 ns; Loc. = LC1_F24; Fanout = 51; REG Node = 'fsm_log:inst|lpm_shiftreg:shifter_X|dffs[1]'
+        Info: Total cell delay = 17.400 ns ( 61.27 % )
+        Info: Total interconnect delay = 11.000 ns ( 38.73 % )
+    Info: + Micro setup delay of destination is 2.600 ns
+    Info: - Shortest clock path from clock "CLK" to destination register is 7.000 ns
+        Info: 1: + IC(0.000 ns) + CELL(2.900 ns) = 2.900 ns; Loc. = PIN_91; Fanout = 50; CLK Node = 'CLK'
+        Info: 2: + IC(4.100 ns) + CELL(0.000 ns) = 7.000 ns; Loc. = LC1_F24; Fanout = 51; REG Node = 'fsm_log:inst|lpm_shiftreg:shifter_X|dffs[1]'
+        Info: Total cell delay = 2.900 ns ( 41.43 % )
+        Info: Total interconnect delay = 4.100 ns ( 58.57 % )
+Info: tco from clock "CLK" to destination pin "Y[10]" through register "fsm_log:inst|lpm_counter:contador_C|alt_counter_f10ke:wysi_counter|q[4]" is 31.500 ns
+    Info: + Longest clock path from clock "CLK" to source register is 7.000 ns
+        Info: 1: + IC(0.000 ns) + CELL(2.900 ns) = 2.900 ns; Loc. = PIN_91; Fanout = 50; CLK Node = 'CLK'
+        Info: 2: + IC(4.100 ns) + CELL(0.000 ns) = 7.000 ns; Loc. = LC5_I30; Fanout = 3; REG Node = 'fsm_log:inst|lpm_counter:contador_C|alt_counter_f10ke:wysi_counter|q[4]'
+        Info: Total cell delay = 2.900 ns ( 41.43 % )
+        Info: Total interconnect delay = 4.100 ns ( 58.57 % )
+    Info: + Micro clock to output delay of source is 1.400 ns
+    Info: + Longest register to pin delay is 23.100 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LC5_I30; Fanout = 3; REG Node = 'fsm_log:inst|lpm_counter:contador_C|alt_counter_f10ke:wysi_counter|q[4]'
+        Info: 2: + IC(2.700 ns) + CELL(2.700 ns) = 5.400 ns; Loc. = LC3_I31; Fanout = 24; COMB Node = 'fsm_log:inst|lpm_add_sub:op_1|addcore:adder|$00006~9'
+        Info: 3: + IC(2.900 ns) + CELL(1.400 ns) = 9.700 ns; Loc. = LC1_I33; Fanout = 2; COMB Node = 'fsm_log:inst|lpm_add_sub:op_1|addcore:adder|a_csnbuffer:result_node|cout[5]'
+        Info: 4: + IC(0.000 ns) + CELL(0.300 ns) = 10.000 ns; Loc. = LC2_I33; Fanout = 2; COMB Node = 'fsm_log:inst|lpm_add_sub:op_1|addcore:adder|a_csnbuffer:result_node|cout[6]'
+        Info: 5: + IC(0.000 ns) + CELL(0.300 ns) = 10.300 ns; Loc. = LC3_I33; Fanout = 2; COMB Node = 'fsm_log:inst|lpm_add_sub:op_1|addcore:adder|a_csnbuffer:result_node|cout[7]'
+        Info: 6: + IC(0.000 ns) + CELL(0.300 ns) = 10.600 ns; Loc. = LC4_I33; Fanout = 2; COMB Node = 'fsm_log:inst|lpm_add_sub:op_1|addcore:adder|a_csnbuffer:result_node|cout[8]'
+        Info: 7: + IC(0.000 ns) + CELL(0.300 ns) = 10.900 ns; Loc. = LC5_I33; Fanout = 2; COMB Node = 'fsm_log:inst|lpm_add_sub:op_1|addcore:adder|a_csnbuffer:result_node|cout[9]'
+        Info: 8: + IC(0.000 ns) + CELL(1.200 ns) = 12.100 ns; Loc. = LC6_I33; Fanout = 1; COMB Node = 'fsm_log:inst|lpm_add_sub:op_1|addcore:adder|a_csnbuffer:result_node|cs_buffer[10]'
+        Info: 9: + IC(6.000 ns) + CELL(5.000 ns) = 23.100 ns; Loc. = PIN_151; Fanout = 0; PIN Node = 'Y[10]'
+        Info: Total cell delay = 11.500 ns ( 49.78 % )
+        Info: Total interconnect delay = 11.600 ns ( 50.22 % )
+Info: th for register "fsm_log:inst|estados[0]" (data pin = "START", clock pin = "CLK") is -1.500 ns
+    Info: + Longest clock path from clock "CLK" to destination register is 7.000 ns
+        Info: 1: + IC(0.000 ns) + CELL(2.900 ns) = 2.900 ns; Loc. = PIN_91; Fanout = 50; CLK Node = 'CLK'
+        Info: 2: + IC(4.100 ns) + CELL(0.000 ns) = 7.000 ns; Loc. = LC5_I39; Fanout = 17; REG Node = 'fsm_log:inst|estados[0]'
+        Info: Total cell delay = 2.900 ns ( 41.43 % )
+        Info: Total interconnect delay = 4.100 ns ( 58.57 % )
+    Info: + Micro hold delay of destination is 3.100 ns
+    Info: - Shortest pin to register delay is 11.600 ns
+        Info: 1: + IC(0.000 ns) + CELL(2.900 ns) = 2.900 ns; Loc. = PIN_90; Fanout = 4; PIN Node = 'START'
+        Info: 2: + IC(6.700 ns) + CELL(2.000 ns) = 11.600 ns; Loc. = LC5_I39; Fanout = 17; REG Node = 'fsm_log:inst|estados[0]'
+        Info: Total cell delay = 4.900 ns ( 42.24 % )
+        Info: Total interconnect delay = 6.700 ns ( 57.76 % )
+Info: Quartus II Timing Analyzer was successful. 0 errors, 1 warning
+    Info: Processing ended: Mon May 26 22:58:00 2008
+    Info: Elapsed time: 00:00:02
+
+

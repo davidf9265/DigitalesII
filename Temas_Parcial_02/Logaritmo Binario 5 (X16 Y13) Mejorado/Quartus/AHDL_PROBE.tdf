@@ -1,0 +1,365 @@
+TITLE "NTSC Waveform Generator";
+
+CONSTANT N = 8;							% Constantes del bloque		%
+
+DEFINE correr(a,b) = (a>b);				% Macros					%
+
+PARAMETERS(								% Parámetros del bloque		%
+	WIDTH = 8,
+	AD_WIDTH = 4,
+	NUM_WORDS = 2^AD_WIDTH
+);
+
+FUNCTION compare (a[3..0], b[3..0])		% Funciones					%
+	RETURNS (less, equal, greater);
+
+SUBDESIGN ahdl_probe					% Declaración de puertos	%
+(
+	R[7..0]			:input = gnd;		% puerto, tipo, inicial		%
+	U[3..0]			:bidir;
+	Y[7..0]			:output;
+	
+	clk, rst, clr	:input;
+	A, B 			:input = gnd;
+	W,Z				:output;
+)
+
+VARIABLE								% Declaración de variables	%
+% nombre : tipo														%
+% Tipos: NODE, TRI_STATE_NODE, <primitive>, <megafunction>, 		%
+% <macrofunction>, <state machine name>								%
+
+	c [WIDTH-1..0]	: NODE;		% Nodo						%
+	ts_node					: TRI_STATE_NODE;	
+	temp					: DFFE;		% Registro					%
+	IF DEVICE_FAMILY == "APEX20K" GENERATE		
+										% Máquina de estados		%
+		20kcounter      : lpm_counter WITH (LPM_WIDTH=WITHAD-1);	
+	END GENERATE;
+
+BEGIN									% Sección lógica operativa	%
+	W=A;								% Asignaciones				%
+	Z=B;
+	Y[7..0]=R[7..0];
+	
+	IF clr THEN							% Condicional IF-ELSE		%
+		Y[]=0;
+	ELSE
+		Y[2..0]=R[2..0];
+		W=B"1";
+	END IF;
+	
+END;
+
+
+%
+
+********************************************* OPCIONES DE SUSTITUCION
+
+OPTIONS NAME_SUBSTITUTION = ON;
+PARAMETERS
+(
+   NAME = "ex1"
+);
+ 
+FUNCTION @NAME(a, b) RETURNS (c);
+SUBDESIGN example
+(
+   a, b, c, d : INPUT;
+   oa, ob: OUTPUT;
+)
+VARIABLE
+   f : @NAME;
+BEGIN
+   oa = @NAME(a, b);
+ 
+   f.a = c;
+   f.b = d;
+   ob = f.c;
+END;
+
+
+FUNCTION lpm_add_sub (cin, dataa[LPM_WIDTH-1..0], datab[LPM_WIDTH-1..0],       add_sub)
+   WITH (LPM_WIDTH, LPM_REPRESENTATION, LPM_DIRECTION, ADDERTYPE,          ONE_INPUT_IS_CONSTANT)
+   RETURNS (result[LPM_WIDTH-1..0], cout, overflow);
+
+FUNCTION compare (a[3..0], b[3..0])
+        RETURNS (less, equal, greater);
+
+VARIABLE
+   comp  : compare;
+   adder : lpm_add_sub WITH (LPM_WIDTH = 8);
+
+The variables comp and adder are instances of the functions compare and lpm_add_sub, which have the following inputs and outputs:
+
+a[3..0], b[3..0]           : INPUT;     -- inputs of compare 
+less, equal, greater       : OUTPUT;    -- outputs of compare
+a[8..1], b[8..1]           : INPUT;     -- inputs of adder
+sum[8..1]                  : OUTPUT;    -- outputs of adder
+
+You can therefore use the following ports of comp and adder in the current Logic Section:
+
+comp.a[], comp.b[], comp.less, comp.equal, comp.greater
+adder.dataa[], adder.datab[], adder.result[]
+
+********************************************* VARIABLES NODO
+
+SUBDESIGN node_ex
+(
+        in1, in2  : INPUT;
+        oe1, oe2  : INPUT;
+        out       : OUTPUT;
+        io        : BIDIR;
+)
+VARIABLE
+        n : NODE;
+        t : TRI_STATE_NODE;
+BEGIN
+        t = TRI(in1, oe1);
+        t = TRI(in2, oe2);  //t is bus of tri_stated in1 and tri_stated in2
+        n = LCELL(t);
+        out = n;              //                    out = LCELL(t)
+        io = t;
+END;
+
+********************************************* VARIABLES REGISTRO
+
+VARIABLE
+   ff : TFF;
+
+// ff.t
+// ff.clk
+// ff.clrn
+// ff.prn
+// ff.q
+
+//FUNCTION DFF(d, clk, clrn, prn) RETURNS (q);
+
+VARIABLE
+   a, b : DFF;
+BEGIN
+   a = b;  // a.d = b.q;
+END;
+
+********************************************* VARIABLE MAQUINA DE ESTADO
+
+VARIABLE
+   sm :   MACHINE 
+          OF BITS (q1, q2, q3)
+          WITH STATES ( 
+            s1 = B"000",
+            s2 = B"010",
+            s3 = B"111");
+
+	//sm.ena = clk1ena;
+	//sm.clk = clk1;
+	//sm.reset = a & b;
+
+********************************************* OPERACIONES BOOLEANAS
+
+a[] = ((c[] & -B"001101") + e[6..1]) # (p, q, r, s, t, v);
+
+- Resta. Complemento a la base ( negativo del número)
++ Suma
+! NOT
+& AND
+# OR
+$ XOR
+...
+
+********************************************* CONDICIONAL CASE
+
+CASE f[].q IS
+   WHEN H"00" =>
+      addr[] = 0;
+      s = a & b;
+   WHEN H"01" =>
+      count[].d = count[].q + 1;
+   WHEN H"02", H"03", H"04" =>
+      f[3..0].d = addr[4..1];
+   WHEN OTHERS =>
+      f[].d = f[].q;
+END CASE;
+
+********************************************* CONDICIONAL IF
+
+BEGIN
+   DEFAULTS
+      a = VCC;
+   END DEFAULTS;
+   IF y & z THEN
+      a = GND;  // a is active low
+   END IF;
+END;
+
+IF a[] == b[] THEN
+        c[8..1] = H "77";
+        addr[3..1] = f[3..1].q;
+        f[].d = addr[] + 1;
+ELSIF g3 $ g4 THEN
+        f[].d = addr[];
+ELSE 
+        d = VCC;
+END IF;
+
+********************************************* TABLAS DE VERDAD
+
+TABLE 
+   a0,  f[4..1].q    =>   f[4..1].d, control;
+   0,   B"0000"      =>   B"0001",   1;
+   0,   B"0100"      =>   B"0010",   0;
+   1,   B"0XXX"      =>   B"0100",   0;
+   X,   B"1111"      =>   B"0101",   1;
+END TABLE;
+
+********************************************* RADIX
+
+B"0110X1X10"
+Q"4671223" 
+H"123AECF"
+
+********************************************* ARITMETICA
+
+(cout, answer[7..0]) = (0, count[7..0]) + (0, delta[7..0])
+c[7..0] = (0,a[3..0]) * (0,b[3..0])
+
+********************************************* SUMADOR LPM
+
+INCLUDE "lpm_add_sub.inc";
+SUBDESIGN lpm_add1
+(
+   a[8..1], b[8..1] : INPUT;
+   c[8..1]          : OUTPUT;
+   carry_out        : OUTPUT;
+)
+BEGIN
+// Megafunction instance with positional port association
+   (c[], carry_out, ) = lpm_add_sub(GND, a[], b[], GND,,) 
+                           WITH (LPM_WIDTH=8, 
+                                 LPM_REPRESENTATION="unsigned");
+
+
+INCLUDE "lpm_add_sub.inc";
+SUBDESIGN lpm_add2
+(
+   a[8..1], b[8..1] : INPUT;
+   c[8..1]          : OUTPUT;
+   carry_out        : OUTPUT;
+)
+VARIABLE
+   8bitadder : lpm_add_sub WITH (LPM_WIDTH=8, 
+                  LPM_REPRESENTATION="unsigned");
+BEGIN
+   8bitadder.cin = GND
+   8bitadder.dataa[] = a[]
+   8bitadder.datab[] = b[]
+   8bitadder.add_sub = GND
+   c[] = 8bitadder.result[]
+   carry_out = 8bitadder.cout
+END;
+
+********************************************* MAQUINA MOORE
+
+SUBDESIGN moore1
+(
+   clk   : INPUT;
+   reset : INPUT;
+   y     : INPUT;
+   z     : OUTPUT;
+)
+VARIABLE
+                 //current   current
+                 //state     output
+   ss: MACHINE OF BITS (z)
+       WITH STATES (s0    =   0,
+                    s1    =   1,
+                    s2    =   1,
+                    s3    =   0);
+BEGIN
+   ss.clk  = clk;
+   ss.reset = reset;
+   TABLE
+  //  current  current    next 
+  // state    input       state
+      ss,      y      =>   ss;
+      s0,      0      =>   s0;
+      s0,      1      =>   s2;
+      s1,      0      =>   s0;
+      s1,      1      =>   s2;
+      s2,      0      =>   s2;
+      s2,      1      =>   s3;
+      s3,      0      =>   s3;
+      s3,      1      =>   s1;
+   END TABLE;
+END;
+
+********************************************* MAQUINA MEALY
+SUBDESIGN mealy
+(
+   clk   : INPUT;
+   reset : INPUT;
+   y     : INPUT;
+   z     : OUTPUT;
+)
+VARIABLE
+   ss: MACHINE WITH STATES (s0, s1, s2, s3);
+BEGIN
+   ss.clk = clk;
+   ss.reset = reset;
+   TABLE
+   // current  current    current next 
+   // state    input       output   state
+      ss,      y       =>  z,       ss;
+      s0,      0       =>  0,       s0;
+      s0,      1       =>  1,       s1;
+      s1,      0       =>  1,       s1;
+      s1,      1       =>  0,       s2;
+      s2,      0       =>  0,       s2;
+      s2,      1       =>  1,       s3;
+      s3,      0       =>  0,       s3;
+      s3,      1       =>  1,       s0;
+   END TABLE;
+END;
+
+********************************************* CONTADOR REGISTRO
+
+SUBDESIGN ahdlcnt
+(
+   clk, load, ena, clr, d[15..0] : INPUT;
+   q[15..0]                      : OUTPUT;
+)
+VARIABLE
+   count[15..0]                  : DFF;
+BEGIN
+   count[].clk = clk;
+   count[].clrn = !clr;
+   IF load THEN
+      count[].d = d[];
+   ELSIF ena THEN
+      count[].d = count[].q + 1;
+   ELSE
+      count[].d = count[].q;
+   END IF;
+   q[] = count[];
+END;
+
+********************************************* CONTADOR LPM
+								
+INCLUDE "lpm_counter.inc";
+SUBDESIGN lpm_cnt
+(
+   clk, load, ena, clr, d[15..0] : INPUT;
+   q[15..0]                      : OUTPUT;
+)
+VARIABLE
+   my_cntr: lpm_counter WITH (LPM_WIDTH=16);
+BEGIN
+   my_cntr.clock  = clk;
+   my_cntr.aload  = load;
+   my_cntr.cnt_en = ena;
+   my_cntr.aclr   = clr;
+   my_cntr.data[] = d[];
+   q[] = my_cntr.q[];
+END;
+
+%

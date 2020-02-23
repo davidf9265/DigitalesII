@@ -1,0 +1,11 @@
+Flow Status : Successful - Mon May 26 22:57:55 2008
+Quartus II Version : 5.0 Build 148 04/26/2005 SJ Full Version
+Revision Name : LogBin
+Top-level Entity Name : LogBin
+Family : FLEX10K
+Device : EPF10K70RC240-4
+Timing Models : Final
+Met timing requirements : N/A
+Total logic elements : 461 / 3,744 ( 12 % )
+Total pins : 50 / 189 ( 26 % )
+Total memory bits : 0 / 18,432 ( 0 % )

@@ -1,0 +1,66 @@
+--------------------------------------------------------------------------------------
+Timing Analyzer Summary
+--------------------------------------------------------------------------------------
+
+Type           : Worst-case tsu
+Slack          : N/A
+Required Time  : None
+Actual Time    : 6.288 ns
+From           : CLEAR
+To             : BANK:inst9|lpm_dff2:inst5|lpm_ff:lpm_ff_component|dffs[2]
+From Clock     : --
+To Clock       : CLK
+Failed Paths   : 0
+
+Type           : Worst-case tco
+Slack          : N/A
+Required Time  : None
+Actual Time    : 10.721 ns
+From           : FSM_MULTIPLICADOR:inst18|fstate.state7
+To             : VSHISTE[3]
+From Clock     : CLK
+To Clock       : --
+Failed Paths   : 0
+
+Type           : Worst-case tpd
+Slack          : N/A
+Required Time  : None
+Actual Time    : 12.381 ns
+From           : CLEAR
+To             : VSHISTE[3]
+From Clock     : --
+To Clock       : --
+Failed Paths   : 0
+
+Type           : Worst-case th
+Slack          : N/A
+Required Time  : None
+Actual Time    : -2.546 ns
+From           : START
+To             : FSM_MULTIPLICADOR:inst18|fstate.state1
+From Clock     : --
+To Clock       : CLK
+Failed Paths   : 0
+
+Type           : Clock Setup: 'CLK'
+Slack          : N/A
+Required Time  : None
+Actual Time    : 220.99 MHz ( period = 4.525 ns )
+From           : FSM_MULTIPLICADOR:inst18|fstate.state7
+To             : lpm_dff3:inst|lpm_ff:lpm_ff_component|dffs[3]
+From Clock     : CLK
+To Clock       : CLK
+Failed Paths   : 0
+
+Type           : Total number of failed paths
+Slack          : 
+Required Time  : 
+Actual Time    : 
+From           : 
+To             : 
+From Clock     : 
+To Clock       : 
+Failed Paths   : 0
+
+--------------------------------------------------------------------------------------
+

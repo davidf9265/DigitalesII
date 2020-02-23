@@ -1,0 +1,6 @@
+v1
+REGISTER_PACKING,REG_PACK_TYPE_FINISHED,ADATA,0,VA[3],VA[3],
+RAM_PACKING,0,M512,18,18,SimpleDual,0,9,11000000,lpm_ram_dq1:inst11|lpm_ram_dq:lpm_ram_dq_component|altram:sram|altsyncram:ram_block|altsyncram_6p91:auto_generated|q_a[3],
+RAM_PACKING,0,M512,18,18,SimpleDual,0,2,11000000,lpm_ram_dq1:inst11|lpm_ram_dq:lpm_ram_dq_component|altram:sram|altsyncram:ram_block|altsyncram_6p91:auto_generated|q_a[2],
+RAM_PACKING,0,M512,18,18,SimpleDual,0,1,11000000,lpm_ram_dq1:inst11|lpm_ram_dq:lpm_ram_dq_component|altram:sram|altsyncram:ram_block|altsyncram_6p91:auto_generated|q_a[1],
+RAM_PACKING,0,M512,18,18,SimpleDual,0,0,11000000,lpm_ram_dq1:inst11|lpm_ram_dq:lpm_ram_dq_component|altram:sram|altsyncram:ram_block|altsyncram_6p91:auto_generated|q_a[0],

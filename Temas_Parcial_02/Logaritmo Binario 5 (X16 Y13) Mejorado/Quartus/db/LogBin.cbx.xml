@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="LogBin">
+		<CBX_INST_ENTRY INSTANCE_NAME="|LogBin|fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[4]" CBX_FILE_NAME="add_sub_u7h.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|LogBin|fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[2]" CBX_FILE_NAME="add_sub_5tg.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|LogBin|fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]" CBX_FILE_NAME="add_sub_5tg.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|LogBin|fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[3]" CBX_FILE_NAME="add_sub_5tg.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|LogBin|fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[1]" CBX_FILE_NAME="add_sub_5tg.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|LogBin|fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|mpar_add:sub_par_add|mpar_add:sub_par_add|lpm_add_sub:adder[0]" CBX_FILE_NAME="add_sub_38h.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|LogBin|fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]" CBX_FILE_NAME="add_sub_6tg.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|LogBin|fsm_log:inst|lpm_mux:mux_X" CBX_FILE_NAME="mux_7dc.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|LogBin|fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[1]" CBX_FILE_NAME="add_sub_6tg.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|LogBin|fsm_log:inst|lpm_mult:cuadrado_X|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|mpar_add:sub_par_add|lpm_add_sub:adder[0]" CBX_FILE_NAME="add_sub_atg.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|LogBin|fsm_log:inst|lpm_add_sub:op_1" CBX_FILE_NAME="add_sub_9og.tdf"/>
+	</PROJECT>
+</LOG_ROOT>

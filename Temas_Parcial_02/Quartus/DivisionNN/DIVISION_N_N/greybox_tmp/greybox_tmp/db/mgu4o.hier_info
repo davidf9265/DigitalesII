@@ -1,0 +1,102 @@
+|mgu4o
+address[0] => address[0]~4.IN1
+address[1] => address[1]~3.IN1
+address[2] => address[2]~2.IN1
+address[3] => address[3]~1.IN1
+address[4] => address[4]~0.IN1
+data[0] => data[0]~3.IN1
+data[1] => data[1]~2.IN1
+data[2] => data[2]~1.IN1
+data[3] => data[3]~0.IN1
+inclock => inclock~0.IN1
+outclock => outclock~0.IN1
+q[0] <= lpm_ram_dq:mgl_prim1.q
+q[1] <= lpm_ram_dq:mgl_prim1.q
+q[2] <= lpm_ram_dq:mgl_prim1.q
+q[3] <= lpm_ram_dq:mgl_prim1.q
+we => we~0.IN1
+
+
+|mgu4o|lpm_ram_dq:mgl_prim1
+data[0] => altram:sram.data[0]
+data[1] => altram:sram.data[1]
+data[2] => altram:sram.data[2]
+data[3] => altram:sram.data[3]
+address[0] => altram:sram.address[0]
+address[1] => altram:sram.address[1]
+address[2] => altram:sram.address[2]
+address[3] => altram:sram.address[3]
+address[4] => altram:sram.address[4]
+inclock => altram:sram.clocki
+outclock => altram:sram.clocko
+we => altram:sram.we
+q[0] <= altram:sram.q[0]
+q[1] <= altram:sram.q[1]
+q[2] <= altram:sram.q[2]
+q[3] <= altram:sram.q[3]
+
+
+|mgu4o|lpm_ram_dq:mgl_prim1|altram:sram
+we => segment[0][3].WE
+we => segment[0][2].WE
+we => segment[0][1].WE
+we => segment[0][0].WE
+data[0] => segment[0][0].DATAIN
+data[1] => segment[0][1].DATAIN
+data[2] => segment[0][2].DATAIN
+data[3] => segment[0][3].DATAIN
+address[0] => segment[0][3].WADDR
+address[0] => segment[0][3].RADDR
+address[0] => segment[0][2].WADDR
+address[0] => segment[0][2].RADDR
+address[0] => segment[0][1].WADDR
+address[0] => segment[0][1].RADDR
+address[0] => segment[0][0].WADDR
+address[0] => segment[0][0].RADDR
+address[1] => segment[0][3].WADDR1
+address[1] => segment[0][3].RADDR1
+address[1] => segment[0][2].WADDR1
+address[1] => segment[0][2].RADDR1
+address[1] => segment[0][1].WADDR1
+address[1] => segment[0][1].RADDR1
+address[1] => segment[0][0].WADDR1
+address[1] => segment[0][0].RADDR1
+address[2] => segment[0][3].WADDR2
+address[2] => segment[0][3].RADDR2
+address[2] => segment[0][2].WADDR2
+address[2] => segment[0][2].RADDR2
+address[2] => segment[0][1].WADDR2
+address[2] => segment[0][1].RADDR2
+address[2] => segment[0][0].WADDR2
+address[2] => segment[0][0].RADDR2
+address[3] => segment[0][3].WADDR3
+address[3] => segment[0][3].RADDR3
+address[3] => segment[0][2].WADDR3
+address[3] => segment[0][2].RADDR3
+address[3] => segment[0][1].WADDR3
+address[3] => segment[0][1].RADDR3
+address[3] => segment[0][0].WADDR3
+address[3] => segment[0][0].RADDR3
+address[4] => segment[0][3].WADDR4
+address[4] => segment[0][3].RADDR4
+address[4] => segment[0][2].WADDR4
+address[4] => segment[0][2].RADDR4
+address[4] => segment[0][1].WADDR4
+address[4] => segment[0][1].RADDR4
+address[4] => segment[0][0].WADDR4
+address[4] => segment[0][0].RADDR4
+clocki => segment[0][3].CLK0
+clocki => segment[0][2].CLK0
+clocki => segment[0][1].CLK0
+clocki => segment[0][0].CLK0
+clocko => segment[0][3].CLK1
+clocko => segment[0][2].CLK1
+clocko => segment[0][1].CLK1
+clocko => segment[0][0].CLK1
+be => ~NO_FANOUT~
+q[0] <= segment[0][0].DATAOUT
+q[1] <= segment[0][1].DATAOUT
+q[2] <= segment[0][2].DATAOUT
+q[3] <= segment[0][3].DATAOUT
+
+

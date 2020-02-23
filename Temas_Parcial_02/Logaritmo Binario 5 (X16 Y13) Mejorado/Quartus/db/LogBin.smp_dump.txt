@@ -1,0 +1,8 @@
+
+State Machine - |LogBin|fsm_log:inst|ss
+Name s3 s1 s2 s4 s0 
+s0 0 1 1 0 1 
+s1 0 0 1 0 0 
+s2 0 1 0 0 0 
+s3 1 1 1 0 0 
+s4 0 1 1 1 0 

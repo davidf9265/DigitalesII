@@ -1,0 +1,73 @@
+|mgat9
+data[0] => data[0]~5.IN1
+data[1] => data[1]~4.IN1
+data[2] => data[2]~3.IN1
+data[3] => data[3]~2.IN1
+data[4] => data[4]~1.IN1
+data[5] => data[5]~0.IN1
+result[0] <= lpm_mux:mgl_prim1.result
+result[1] <= lpm_mux:mgl_prim1.result
+result[2] <= lpm_mux:mgl_prim1.result
+sel[0] => sel[0]~0.IN1
+
+
+|mgat9|lpm_mux:mgl_prim1
+data[0][0] => muxlut:$00009.data[0]
+data[0][1] => muxlut:$00011.data[0]
+data[0][2] => muxlut:$00013.data[0]
+data[1][0] => muxlut:$00009.data[1]
+data[1][1] => muxlut:$00011.data[1]
+data[1][2] => muxlut:$00013.data[1]
+sel[0] => muxlut:$00013.select[0]
+sel[0] => muxlut:$00011.select[0]
+sel[0] => muxlut:$00009.select[0]
+clock => ~NO_FANOUT~
+aclr => ~NO_FANOUT~
+clken => ~NO_FANOUT~
+result[0] <= altshift:external_latency_ffs.result[0]
+result[1] <= altshift:external_latency_ffs.result[1]
+result[2] <= altshift:external_latency_ffs.result[2]
+
+
+|mgat9|lpm_mux:mgl_prim1|altshift:external_latency_ffs
+data[0] => result[0].DATAIN
+data[1] => result[1].DATAIN
+data[2] => result[2].DATAIN
+clock => ~NO_FANOUT~
+aclr => ~NO_FANOUT~
+clken => ~NO_FANOUT~
+result[0] <= data[0].DB_MAX_OUTPUT_PORT_TYPE
+result[1] <= data[1].DB_MAX_OUTPUT_PORT_TYPE
+result[2] <= data[2].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mgat9|lpm_mux:mgl_prim1|muxlut:$00009
+clock => clock_out.DATAIN
+aclr => aclr_out.DATAIN
+clken => clken_out.DATAIN
+result <= result_node.DB_MAX_OUTPUT_PORT_TYPE
+clock_out <= clock.DB_MAX_OUTPUT_PORT_TYPE
+aclr_out <= aclr.DB_MAX_OUTPUT_PORT_TYPE
+clken_out <= clken.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mgat9|lpm_mux:mgl_prim1|muxlut:$00011
+clock => clock_out.DATAIN
+aclr => aclr_out.DATAIN
+clken => clken_out.DATAIN
+result <= result_node.DB_MAX_OUTPUT_PORT_TYPE
+clock_out <= clock.DB_MAX_OUTPUT_PORT_TYPE
+aclr_out <= aclr.DB_MAX_OUTPUT_PORT_TYPE
+clken_out <= clken.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mgat9|lpm_mux:mgl_prim1|muxlut:$00013
+clock => clock_out.DATAIN
+aclr => aclr_out.DATAIN
+clken => clken_out.DATAIN
+result <= result_node.DB_MAX_OUTPUT_PORT_TYPE
+clock_out <= clock.DB_MAX_OUTPUT_PORT_TYPE
+aclr_out <= aclr.DB_MAX_OUTPUT_PORT_TYPE
+clken_out <= clken.DB_MAX_OUTPUT_PORT_TYPE
+
+

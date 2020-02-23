@@ -1,0 +1,89 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 1991-2009 Altera Corporation
+# Your use of Altera Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Altera Program License 
+# Subscription Agreement, Altera MegaCore Function License 
+# Agreement, or other applicable license agreement, including, 
+# without limitation, that your use is for the sole purpose of 
+# programming logic devices manufactured by Altera and sold by 
+# Altera or its authorized distributors.  Please refer to the 
+# applicable agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus II
+# Version 9.0 Build 235 06/17/2009 Service Pack 2 SJ Web Edition
+# Date created = 09:58:47  October 21, 2009
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		DIVISION_N_N_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus II software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "Cyclone II"
+set_global_assignment -name DEVICE EP2C5AF256A7
+set_global_assignment -name TOP_LEVEL_ENTITY DIVISION_N_N
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION "9.0 SP2"
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "09:58:47  OCTOBER 21, 2009"
+set_global_assignment -name LAST_QUARTUS_VERSION "9.0 SP2"
+set_global_assignment -name USE_GENERATED_PHYSICAL_CONSTRAINTS OFF -section_id eda_blast_fpga
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP "-40"
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 125
+set_global_assignment -name QIP_FILE lpm_dff0.qip
+set_global_assignment -name QIP_FILE lpm_dff1.qip
+set_global_assignment -name QIP_FILE lpm_add_sub0.qip
+set_global_assignment -name QIP_FILE lpm_clshift0.qip
+set_global_assignment -name QIP_FILE lpm_dff2.qip
+set_global_assignment -name BDF_FILE DIVISION_N_N.bdf
+set_global_assignment -name QIP_FILE lpm_bustri0.qip
+set_global_assignment -name QIP_FILE lpm_decode0.qip
+set_global_assignment -name BDF_FILE BANK.bdf
+set_global_assignment -name QIP_FILE lpm_bustri1.qip
+set_global_assignment -name QIP_FILE lpm_ram_dq0.qip
+set_global_assignment -name MIF_FILE DATOS_r.mif
+set_global_assignment -name QIP_FILE lpm_ram_dp0.qip
+set_global_assignment -name QIP_FILE lpm_counter0.qip
+set_global_assignment -name QIP_FILE lpm_compare0.qip
+set_global_assignment -name SMF_FILE N_N.smf
+set_global_assignment -name QIP_FILE ../SEMAFORO_MOORE/lpm_mux2.qip
+set_global_assignment -name QIP_FILE ../SEMAFORO_MOORE/lpm_mux3.qip
+set_global_assignment -name QIP_FILE lpm_mux0.qip
+set_global_assignment -name QIP_FILE ../../CESAR/digitales/divisorbasico/lpm_clshift1.qip
+set_global_assignment -name QIP_FILE lpm_clshift2.qip
+set_global_assignment -name VECTOR_WAVEFORM_FILE DIVISION_N_N.vwf
+set_global_assignment -name BDF_FILE DIVISION_N_N2.bdf
+set_global_assignment -name QIP_FILE lpm_constant0.qip
+set_global_assignment -name QIP_FILE lpm_dff3.qip
+set_global_assignment -name QIP_FILE lpm_add_sub1.qip
+set_global_assignment -name QIP_FILE lpm_add_sub2.qip
+set_global_assignment -name SMF_FILE N_N2.smf
+set_global_assignment -name VERILOG_FILE N_N2.v
+set_global_assignment -name BDF_FILE C2.bdf
+set_global_assignment -name QIP_FILE lpm_add_sub3.qip
+set_global_assignment -name BDF_FILE SUM2.bdf
+set_global_assignment -name BDF_FILE ALU.bdf
+set_global_assignment -name VERILOG_FILE N_N.v
+set_global_assignment -name SMF_FILE N_N3.smf
+set_global_assignment -name INCREMENTAL_COMPILATION OFF
+set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
+set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
+set_global_assignment -name HEX_FILE DATOSRAM.hex
+set_global_assignment -name VERILOG_FILE N_N3.v
+set_global_assignment -name BDF_FILE ../RAIZ/RAIZ.bdf
+set_global_assignment -name MISC_FILE "D:/UNIVERSIDAD/MELISSA/EJERCICIOS/DIVISION_N_N/DIVISION_N_N.dpf"
